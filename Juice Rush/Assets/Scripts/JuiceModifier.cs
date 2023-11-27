@@ -27,7 +27,13 @@ public class JuiceModifier : MonoBehaviour
         juiceText.GetComponent<TMPro.TextMeshProUGUI>().text = juiceLevel.ToString();
 
         //Set the speed of the animation to the current juice level
-        juiceText.GetComponent<Animator>().speed = (juiceLevel/3)*2;
+        juiceText.GetComponent<Animator>().speed = (juiceLevel)*2;
+
+        //If the juice level is 0, reset the animation
+        if (juiceLevel == 0)
+        {
+            juiceText.GetComponent<Animator>().Play("Juice Speed", 0, 0);
+        }
 
         //Set the size of the text to the current juice level
         juiceText.transform.localScale = new Vector3(juiceLevel*0.2f+1, juiceLevel * 0.2f + 1, 1);
