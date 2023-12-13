@@ -123,6 +123,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &18988779
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 18988780}
+  - component: {fileID: 18988781}
+  m_Layer: 0
+  m_Name: Weapon Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &18988780
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18988779}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2081110374}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &18988781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18988779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a0e1e1f169e1ad4ba178df29d63ea2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponContainer: {fileID: 1772341851}
 --- !u!1 &213402599
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,7 +833,7 @@ Transform:
   - {fileID: 1068428908}
   - {fileID: 756774953}
   m_Father: {fileID: 2081110374}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
@@ -1441,6 +1486,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1549717674}
   m_CullTransparentMesh: 1
+--- !u!1 &1772341851
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1772341852}
+  m_Layer: 0
+  m_Name: Weapon Container
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1772341852
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772341851}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2081110374}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1882880882
 GameObject:
   m_ObjectHideFlags: 0
@@ -1813,6 +1889,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 18988780}
+  - {fileID: 1772341852}
   - {fileID: 957136568}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -1878,38 +1956,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2081110376}
         m_TargetAssemblyTypeName: playerController, Assembly-CSharp
-        m_MethodName: OnAttack
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 6b14cb9b-160e-4a8c-b92c-8b6a55ce1d34
-    m_ActionName: Player/Fire[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2081110376}
-        m_TargetAssemblyTypeName: playerController, Assembly-CSharp
-        m_MethodName: OnGrapple
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: e840e6b4-1e67-4bdf-a06c-837690ff9aec
-    m_ActionName: Player/Grapple[/Keyboard/e]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2081110376}
-        m_TargetAssemblyTypeName: playerController, Assembly-CSharp
         m_MethodName: OnSprint
         m_Mode: 0
         m_Arguments:
@@ -1942,22 +1988,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2081110376}
         m_TargetAssemblyTypeName: playerController, Assembly-CSharp
-        m_MethodName: OnADS
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 63316a17-9f56-480a-81c3-191613cefd80
-    m_ActionName: Player/ADS[/Mouse/rightButton]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2081110376}
-        m_TargetAssemblyTypeName: playerController, Assembly-CSharp
         m_MethodName: OnJump
         m_Mode: 0
         m_Arguments:
@@ -1971,9 +2001,61 @@ MonoBehaviour:
     m_ActionId: 23874333-655d-477f-b741-c1b4d4cbb3d9
     m_ActionName: Player/Jump[/Keyboard/space]
   - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c77065eb-8eaf-4290-990d-7c6b2249855d
+    m_ActionName: UI/Toggle Menu[/Keyboard/escape]
+  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2081110376}
         m_TargetAssemblyTypeName: playerController, Assembly-CSharp
+        m_MethodName: OnGrapple
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 85ec15e5-ab18-4498-bbfa-84fb7ed71bbd
+    m_ActionName: Movement/Grapple[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 18988781}
+        m_TargetAssemblyTypeName: weaponController, Assembly-CSharp
+        m_MethodName: OnAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d93c950c-da51-49bd-94d6-389348898b6a
+    m_ActionName: Weapons/Attack[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 18988781}
+        m_TargetAssemblyTypeName: weaponController, Assembly-CSharp
+        m_MethodName: OnADS
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a01724e8-343d-4424-bc24-627b4c0fd559
+    m_ActionName: Weapons/ADS[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 18988781}
+        m_TargetAssemblyTypeName: weaponController, Assembly-CSharp
         m_MethodName: OnReload
         m_Mode: 0
         m_Arguments:
@@ -1984,12 +2066,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: df5d1b29-45e6-445e-bc2f-0f3cb7f92b41
-    m_ActionName: Player/Reload[/Keyboard/r]
+    m_ActionId: 9543ace2-32a0-4cba-bc46-023ee931c840
+    m_ActionName: Weapons/Reload[/Keyboard/r]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2081110376}
-        m_TargetAssemblyTypeName: playerController, Assembly-CSharp
+      - m_Target: {fileID: 18988781}
+        m_TargetAssemblyTypeName: weaponController, Assembly-CSharp
         m_MethodName: OnSwapWeapon
         m_Mode: 0
         m_Arguments:
@@ -2000,12 +2082,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 7aaaf9a6-c679-4bd8-97ee-5512614f0320
-    m_ActionName: Player/Swap Weapon[/Mouse/scroll/down,/Mouse/scroll/up]
+    m_ActionId: a0d3ab61-1ab1-475f-b705-f985781f1b9d
+    m_ActionName: Weapons/Swap Weapon[/Mouse/scroll/down,/Mouse/scroll/up]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2081110376}
-        m_TargetAssemblyTypeName: playerController, Assembly-CSharp
+      - m_Target: {fileID: 18988781}
+        m_TargetAssemblyTypeName: weaponController, Assembly-CSharp
         m_MethodName: OnPrimaryWeapon
         m_Mode: 0
         m_Arguments:
@@ -2016,12 +2098,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: cfaee8b7-2757-4991-9a35-ffce6ff188fc
-    m_ActionName: Player/Primary Weapon[/Keyboard/1]
+    m_ActionId: 5b53caeb-4c85-4402-9006-25b5638829be
+    m_ActionName: Weapons/Primary Weapon[/Keyboard/1]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2081110376}
-        m_TargetAssemblyTypeName: playerController, Assembly-CSharp
+      - m_Target: {fileID: 18988781}
+        m_TargetAssemblyTypeName: weaponController, Assembly-CSharp
         m_MethodName: OnSecondaryWeapon
         m_Mode: 0
         m_Arguments:
@@ -2032,15 +2114,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: a517118c-2397-4453-8480-38c8e56bb549
-    m_ActionName: Player/Secondary Weapon[/Keyboard/2]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: c77065eb-8eaf-4290-990d-7c6b2249855d
-    m_ActionName: UI/Toggle Menu[/Keyboard/escape]
+    m_ActionId: 3600cb87-e8be-48d2-b1f1-175f09762676
+    m_ActionName: Weapons/Secondary Weapon[/Keyboard/2]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: Movement
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 963194227}
 --- !u!114 &2081110376
@@ -2055,9 +2133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c02fe684b886da41b14d32e0abb2c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkingspeed: 10
-  runningspeed: 20
-  jumpspeed: 5
   playerCamera: {fileID: 963194227}
 --- !u!1 &2132596176
 GameObject:

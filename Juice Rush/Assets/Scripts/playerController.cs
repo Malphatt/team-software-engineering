@@ -5,32 +5,49 @@ using UnityEngine.InputSystem;
 
 public class playerController : MonoBehaviour
 {
-    public Camera playerCamera;
-    Vector3 cameraOffset;
+    [SerializeField] Camera playerCamera;
+    private Vector3 cameraOffset;
 
-    [SerializeField] float walkingspeed = 10.0f;
-    [SerializeField] float runningspeed = 20.0f;
-    [SerializeField] float jumpHeight = 2.0f;
-    [SerializeField] float doubleJumpHeight = 1.5f;
+    private float walkingspeed = 10.0f;
+    private float runningspeed = 20.0f;
+    private float sneakingSpeed = 2.5f;
+    private float groundAcceleration = 2.5f;
+    private float airAcceleration = 0.5f;
+    private float jumpHeight = 2.0f;
+    private float doubleJumpHeight = 1.5f;
 
-    float gravity = -9.81f;
-    float speed;
-    Vector3 velocity;
+    private float gravity = -9.81f;
+    private float friction = 0.8f;
+    private float slideFriction = 0.9875f;
+    private float speed;
+    private Vector3 velocity;
     
-    CharacterController characterController;
-    Vector3 inputDirection = Vector3.zero;
-    float mouseSensitivity = 0.05f;
-    float rotationX = 0f;
-    float rotationY = 0f;
+    private CharacterController characterController;
+    private Vector3 inputDirection = Vector3.zero;
+    private float mouseSensitivity = 0.05f;
+    private float rotationX = 0.0f;
+    private float rotationY = 0.0f;
 
-    bool isGrounded;
-    bool isJumping = false;
-    int jumpCount = 0;
-    int maxJumpCount = 2;
+    private bool isGrounded;
+    private bool isSprinting = false;
+    private bool isSneakSliding = false;
+    private bool isSneaking = false;
+    private bool isSliding = false;
+    private bool isJumping = false;
+    private int jumpCount = 0;
+    private int maxJumpCount = 2;
+
+    private float originalHeight;
+    private Vector3 originalCenter;
+    private float sneakHeight = 1.5f;
+    private float slideHeight = 0.75f;
+    private float crouchSpeed = 5.0f;
 
     void Awake()
     {
+        // Set up references
         characterController = GetComponent<CharacterController>();
+        originalHeight = characterController.height;
         cameraOffset = playerCamera.transform.position - transform.position;
         speed = walkingspeed;
 
@@ -57,11 +74,114 @@ public class playerController : MonoBehaviour
         // Move player
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
-        Vector3 moveDirection = (forward * inputDirection.z + right * inputDirection.x) * speed;
+        Vector3 moveDirection = forward * inputDirection.z + right * inputDirection.x;
 
-        characterController.Move(moveDirection * Time.deltaTime);
+        // Check if the player is moving (pressing WASD)
+        if (moveDirection.magnitude == 0f)
+        {
+            // If the player is not moving and is grounded, apply friction to slow them down
+            if (isGrounded && isSliding)
+            {
+                // If the player is sneak sliding and has a higher velocity than walking speed, apply a smaller friction
+                velocity.x = velocity.x * slideFriction;
+                velocity.z = velocity.z * slideFriction;
+            }
+            else if (isGrounded)
+            {
+                // If the player is grounded and not moving, apply normal friction
+                velocity.x = velocity.x * friction;
+                velocity.z = velocity.z * friction;
+                
+            }
+        }
+        else
+        {
+            // If the player is moving and is grounded, apply acceleration to speed them up
+            if (isGrounded)
+            {
+                velocity.x = Mathf.Lerp(velocity.x, moveDirection.x * speed, groundAcceleration * Time.deltaTime);
+                velocity.z = Mathf.Lerp(velocity.z, moveDirection.z * speed, groundAcceleration * Time.deltaTime);
+            }
+            // If the player is moving and is not grounded, apply a smaller acceleration but only if the player is moving in the opposite direction of their velocity
+            else
+            {
+                float moveDirectionRadians = Mathf.Atan2(moveDirection.x, moveDirection.z);
+                float velocityRadians = Mathf.Atan2(velocity.x, velocity.z);
 
-        if (isJumping)
+                float angle = Mathf.DeltaAngle(moveDirectionRadians, velocityRadians);
+                float pi = Mathf.PI;
+
+                // If the angle between the move direction and the velocity is greater than 90 degrees, slow down the player
+                if (angle > pi / 2 || angle < -pi / 2)
+                {
+                    // Slow down the velocity in the current direction
+                    velocity.x = Mathf.Lerp(velocity.x, moveDirection.x * speed, airAcceleration * Time.deltaTime);
+                    velocity.z = Mathf.Lerp(velocity.z, moveDirection.z * speed, airAcceleration * Time.deltaTime);
+                }
+                // If the angle between the move direction and the velocity is less than 90 degrees, change the direction of the player
+                else
+                {
+                    Vector3 newVelocity = new Vector3(moveDirection.x * speed, velocity.y, moveDirection.z * speed);
+                    velocity.x = Mathf.Lerp(velocity.x, newVelocity.x, airAcceleration * Time.deltaTime);
+                    velocity.z = Mathf.Lerp(velocity.z, newVelocity.z, airAcceleration * Time.deltaTime);
+                }
+            }
+
+        }
+
+        // Alter the player's velocity based on whether they are sprinting or not and if they are grounded
+        if (isGrounded)
+        {
+            if (isSprinting)
+            {
+                speed = runningspeed;
+            }
+            else if (isSneakSliding)
+            {
+                speed = sneakingSpeed;
+            }
+            else
+            {
+                speed = walkingspeed;
+            }
+        }
+
+        // Check if the player is sneaking or sliding
+        if (isSneakSliding)
+        {
+            // Alter the player's hitbox to be smaller
+
+            // If the player's speed is greater than walkingspeed, slide
+            if (velocity.magnitude > walkingspeed)
+            {
+                isSliding = true;
+                characterController.height = Mathf.Lerp(characterController.height, slideHeight, crouchSpeed * Time.deltaTime);
+                characterController.center = Vector3.Lerp(characterController.center, new Vector3(0f, 1 - slideHeight / 2, 0f), crouchSpeed * Time.deltaTime);
+            }
+            // If the player's speed is less than or equal to walkingspeed and they aren't sliding, sneak
+            else if (!isSliding)
+            {
+                isSneaking = true;
+                characterController.height = Mathf.Lerp(characterController.height, sneakHeight, crouchSpeed * Time.deltaTime);
+                characterController.center = Vector3.Lerp(characterController.center, new Vector3(0f, 1 - sneakHeight / 2, 0f), crouchSpeed * Time.deltaTime);
+            }
+            // If the player's speed is slow enough, stop sliding
+            else if (velocity.magnitude <= 1.5f)
+            {
+                isSliding = false;
+            }
+        }
+        else
+        {
+            // Reset the player's hitbox to its original size
+            characterController.height = Mathf.Lerp(characterController.height, originalHeight, crouchSpeed * Time.deltaTime);
+            characterController.center = Vector3.Lerp(characterController.center, new Vector3(0f, 1 - originalHeight / 2, 0f), crouchSpeed * Time.deltaTime);
+            isSneaking = false;
+            isSliding = false;
+        }
+
+        // If the player is holding the jump button, jump
+        if (isJumping && !isSneakSliding)
         {
             Jump();
         }
@@ -84,7 +204,7 @@ public class playerController : MonoBehaviour
         }
     }
 
-    void Slide()
+    void Grapple() // You might not need this method
     {
 
     }
@@ -107,32 +227,6 @@ public class playerController : MonoBehaviour
         transform.localRotation = Quaternion.Euler(0f, rotationX, 0f);
         // Rotate camera
         playerCamera.transform.localRotation = Quaternion.Euler(-rotationY, rotationX, 0f);
-    }
-
-//TODO: Implement
-    public void OnAttack(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Started)
-        {
-            Debug.Log("Attack");
-        }
-        else if (context.phase == InputActionPhase.Canceled)
-        {
-            Debug.Log("Stopped Attacking");
-        }
-    }
-
-//TODO: Implement
-    public void OnADS(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Started)
-        {
-            Debug.Log("ADS");
-        }
-        else if (context.phase == InputActionPhase.Canceled)
-        {
-            Debug.Log("Stopped ADS");
-        }
     }
 
     public void OnJump(InputAction.CallbackContext context)
@@ -166,80 +260,27 @@ public class playerController : MonoBehaviour
         }
     }
 
-//TODO: Implement
-    public void OnReload(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Started)
-        {
-            Debug.Log("Reload");
-        }
-        else if (context.phase == InputActionPhase.Canceled)
-        {
-            Debug.Log("Stopped Reloading");
-        }
-    }
-
     public void OnSprint(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)
         {
-            speed = runningspeed;
+            isSprinting = true;
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
-            speed = walkingspeed;
+            isSprinting = false;
         }
     }
 
-//TODO: Implement
     public void OnSneakSlide(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)
         {
-            Debug.Log("Sneak/Slide");
+            isSneakSliding = true;
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
-            Debug.Log("Stopped Sneaking/Sliding");
-        }
-    }
-
-//TODO: Implement
-    public void OnSwapWeapon(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Started)
-        {
-            Debug.Log("Swap Weapon");
-        }
-        else if (context.phase == InputActionPhase.Canceled)
-        {
-            Debug.Log("Stopped Swapping Weapon");
-        }
-    }
-
-//TODO: Implement
-    public void OnPrimaryWeapon(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Started)
-        {
-            Debug.Log("Primary Weapon");
-        }
-        else if (context.phase == InputActionPhase.Canceled)
-        {
-            Debug.Log("Stopped Primary Weapon");
-        }
-    }
-
-//TODO: Implement
-    public void OnSecondaryWeapon(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Started)
-        {
-            Debug.Log("Secondary Weapon");
-        }
-        else if (context.phase == InputActionPhase.Canceled)
-        {
-            Debug.Log("Stopped Secondary Weapon");
+            isSneakSliding = false;
         }
     }
 }
