@@ -1,5 +1,5 @@
 {
-    "name": "playerController",
+    "name": "Input System",
     "maps": [
         {
             "name": "Movement",

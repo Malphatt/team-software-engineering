@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class playerController : MonoBehaviour
 {
     [SerializeField] Camera playerCamera;
+    [SerializeField] private Transform debugHitPointTransform;
     private Vector3 cameraOffset;
 
     private float walkingspeed = 10.0f;
@@ -20,7 +21,7 @@ public class playerController : MonoBehaviour
     private float friction = 0.8f;
     private float slideFriction = 0.9875f;
     private float speed;
-    private Vector3 velocity;
+    [SerializeField] private Vector3 velocity;
     
     private CharacterController characterController;
     private Vector3 inputDirection = Vector3.zero;
@@ -39,9 +40,22 @@ public class playerController : MonoBehaviour
 
     private float originalHeight;
     private Vector3 originalCenter;
+    private Vector3 hookshotPosition;
     private float sneakHeight = 1.5f;
     private float slideHeight = 0.75f;
     private float crouchSpeed = 5.0f;
+
+    Vector3 hookshotDir;
+    float hookshotSpeed;
+    private float hookshotSpeedMultiplier = 5.0f;
+    [SerializeField] private Vector3 grappleVelocityMomentum;
+
+    private State state;
+    private enum State
+    {
+        Normal,
+        Grappling
+    }
 
     void Awake()
     {
@@ -69,7 +83,7 @@ public class playerController : MonoBehaviour
         playerCamera.transform.position = transform.position + cameraOffset;
     }
 
-    void FixedUpdate()
+    private void HandlePlayerMovemenet()
     {
         // Move player
         Vector3 forward = transform.TransformDirection(Vector3.forward);
@@ -91,7 +105,7 @@ public class playerController : MonoBehaviour
                 // If the player is grounded and not moving, apply normal friction
                 velocity.x = velocity.x * friction;
                 velocity.z = velocity.z * friction;
-                
+
             }
         }
         else
@@ -187,26 +201,75 @@ public class playerController : MonoBehaviour
         }
 
         velocity.y += gravity * Time.deltaTime;
+
+        // Apply momentum from the grapple
+        velocity += grappleVelocityMomentum;
+
         characterController.Move(velocity * Time.deltaTime);
+
+        // Dampen momentum from the grapple
+        if (grappleVelocityMomentum.magnitude > 0f)
+        {
+            float momentumDrag = 0.5f;
+            grappleVelocityMomentum -= grappleVelocityMomentum * momentumDrag * Time.deltaTime;
+            if (grappleVelocityMomentum.magnitude < 0.0f)
+            {
+                grappleVelocityMomentum = Vector3.zero;
+            }
+        }
+    }
+
+    void HandleHookshotMovement()
+    {
+        // Calculate the hookshot's direction and speed
+        hookshotDir = (hookshotPosition - transform.position).normalized;
+        hookshotSpeed = Vector3.Distance(transform.position, hookshotPosition);
+
+        // Move character controller
+        characterController.Move(hookshotSpeed * hookshotSpeedMultiplier * hookshotDir * Time.deltaTime);
+    }
+
+    void FixedUpdate()
+    {
+        switch (state)
+        {
+            case State.Normal:
+                HandlePlayerMovemenet();
+                break;
+            case State.Grappling:
+                HandleHookshotMovement();
+                break;
+        }
     }
 
     void Jump(bool pressedJump = false)
     {
-        if (isGrounded)
+        // Preform a normal jump
+        if (state == State.Normal)
+        { 
+            if (isGrounded)
+            {
+                velocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravity);
+                jumpCount++;
+            }
+            else if (jumpCount < maxJumpCount && pressedJump)
+            {
+                velocity.y += Mathf.Sqrt(doubleJumpHeight * -3.0f * gravity);
+                jumpCount++;
+            }
+        }        
+        // Break out of the grappling state
+        else if (state == State.Grappling)
         {
-            velocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravity);
-            jumpCount++;
-        }
-        else if (jumpCount < maxJumpCount && pressedJump)
-        {
-            velocity.y += Mathf.Sqrt(doubleJumpHeight * -3.0f * gravity);
-            jumpCount++;
-        }
-    }
+            // Set the state to normal
+            state = State.Normal;
 
-    void Grapple() // You might not need this method
-    {
+            // Calculate the momentum from the grapple (CURRENTLY NOT WORKING, APPLIES TOO MUCH MOMENTUM)
+            //grappleVelocityMomentum = hookshotDir * hookshotSpeed * hookshotSpeedMultiplier;
 
+            // Reset the hookshot position
+            hookshotPosition = Vector3.zero;
+        }
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -247,16 +310,15 @@ public class playerController : MonoBehaviour
 
     }
 
-//TODO: Implement
     public void OnGrapple(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)
         {
-            Debug.Log("Grapple");
-        }
-        else if (context.phase == InputActionPhase.Canceled)
-        {
-            Debug.Log("Stopped Grappling");
+            if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit hit)){;
+                debugHitPointTransform.position = hit.point;    
+                hookshotPosition = hit.point;
+                state = State.Grappling; // Set the state to grappling
+            }
         }
     }
 
