@@ -8,6 +8,15 @@ public class weaponController : MonoBehaviour
     [SerializeField] GameObject weaponContainer;
     private GameObject[] weaponsArray;
 
+    // Weapon states
+    public enum WeaponState
+    {
+        primary,
+        secondary,
+        reloading,
+        swapping
+    }
+
     void Awake()
     {
         // Get all weapons in the weapon container and add them to the weapons array
