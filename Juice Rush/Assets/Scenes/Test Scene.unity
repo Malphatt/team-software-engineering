@@ -1966,6 +1966,7 @@ GameObject:
   - component: {fileID: 2081110376}
   - component: {fileID: 2081110375}
   - component: {fileID: 2081110377}
+  - component: {fileID: 2081110378}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2091,13 +2092,49 @@ MonoBehaviour:
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_DeviceRegainedEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_ControlsChangedEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
@@ -2213,19 +2250,7 @@ MonoBehaviour:
     m_ActionName: Movement/Grapple[/Keyboard/e]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 18988781}
-        m_TargetAssemblyTypeName: weaponController, Assembly-CSharp
-        m_MethodName: OnAttack
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 3095431937923961280}
+      - m_Target: {fileID: 2081110378}
         m_TargetAssemblyTypeName: katanaScript, Assembly-CSharp
         m_MethodName: Attack
         m_Mode: 0
@@ -2237,88 +2262,88 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: d93c950c-da51-49bd-94d6-389348898b6a
-    m_ActionName: Weapons/Attack[/Mouse/leftButton]
+    m_ActionId: fa2eae29-8af7-493f-8e68-11182e2cae36
+    m_ActionName: Movement/Attack[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 18988781}
-        m_TargetAssemblyTypeName: weaponController, Assembly-CSharp
-        m_MethodName: OnADS
-        m_Mode: 0
+      - m_Target: {fileID: 2081110369}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: a01724e8-343d-4424-bc24-627b4c0fd559
-    m_ActionName: Weapons/ADS[/Mouse/rightButton]
+    m_ActionId: ead65a00-b60c-4133-b471-1302e2bb82b6
+    m_ActionName: Movement/ADS[/Mouse/rightButton]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 18988781}
-        m_TargetAssemblyTypeName: weaponController, Assembly-CSharp
-        m_MethodName: OnReload
-        m_Mode: 0
+      - m_Target: {fileID: 2081110369}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 9543ace2-32a0-4cba-bc46-023ee931c840
-    m_ActionName: Weapons/Reload[/Keyboard/r]
+    m_ActionId: bc3ab577-975c-4acf-8d27-6f84860ef732
+    m_ActionName: Movement/Reload[/Keyboard/r]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 18988781}
-        m_TargetAssemblyTypeName: weaponController, Assembly-CSharp
-        m_MethodName: OnSwapWeapon
-        m_Mode: 0
+      - m_Target: {fileID: 2081110369}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: a0d3ab61-1ab1-475f-b705-f985781f1b9d
-    m_ActionName: Weapons/Swap Weapon[/Mouse/scroll/down,/Mouse/scroll/up]
+    m_ActionId: 6fdb9d9d-9b4a-415b-a7d5-8f585f4f46c4
+    m_ActionName: Movement/Swap Weapon[/Mouse/scroll/down,/Mouse/scroll/up]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 18988781}
-        m_TargetAssemblyTypeName: weaponController, Assembly-CSharp
-        m_MethodName: OnPrimaryWeapon
-        m_Mode: 0
+      - m_Target: {fileID: 2081110369}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 5b53caeb-4c85-4402-9006-25b5638829be
-    m_ActionName: Weapons/Primary Weapon[/Keyboard/1]
+    m_ActionId: 0b54de4e-8348-46ba-b5c6-bc9f07478b5a
+    m_ActionName: Movement/Primary Weapon[/Keyboard/1]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 18988781}
-        m_TargetAssemblyTypeName: weaponController, Assembly-CSharp
-        m_MethodName: OnSecondaryWeapon
-        m_Mode: 0
+      - m_Target: {fileID: 2081110369}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 3600cb87-e8be-48d2-b1f1-175f09762676
-    m_ActionName: Weapons/Secondary Weapon[/Keyboard/2]
+    m_ActionId: 23cf4bdd-f98f-4b56-9a6e-3278705755bc
+    m_ActionName: Movement/Secondary Weapon[/Keyboard/2]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Movement
@@ -2360,6 +2385,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &2081110378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081110369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f0a28539841d284998d46dfd8367073, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animation1: {fileID: 7787043856069406958, guid: 6133a3327e53a8248996f62c47f9fc03, type: 3}
+  animation2: {fileID: 7787043856069406958, guid: be451f56c7989094ebd4859ed0b35f59, type: 3}
+  katana: {fileID: 2431660532347636484}
 --- !u!1 &2132596176
 GameObject:
   m_ObjectHideFlags: 0
@@ -2930,7 +2970,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3095431937923961278}
   - component: {fileID: 3095431937923961279}
-  - component: {fileID: 3095431937923961280}
   m_Layer: 0
   m_Name: Katana
   m_TagString: Untagged
@@ -2987,8 +3026,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2431660532347636484}
-  m_LocalRotation: {x: 0.6342878, y: 0.23670919, z: -0.6902037, w: 0.25547335}
-  m_LocalPosition: {x: -0.61, y: 0.13, z: -0.62}
+  m_LocalRotation: {x: 0.20898344, y: 0.64395505, z: -0.6292305, w: -0.3817287}
+  m_LocalPosition: {x: -0.70173234, y: 0.23613667, z: -0.6217448}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2999,7 +3038,7 @@ Transform:
   - {fileID: 3854783941908699915}
   m_Father: {fileID: 2081110374}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 40.605, y: -83.701, z: -176.044}
+  m_LocalEulerAnglesHint: {x: 40.605, y: -83.701, z: -279.155}
 --- !u!95 &3095431937923961279
 Animator:
   serializedVersion: 5
@@ -3020,19 +3059,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &3095431937923961280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2431660532347636484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f0a28539841d284998d46dfd8367073, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  katana: {fileID: 2431660532347636484}
 --- !u!4 &3854783941908699915
 Transform:
   m_ObjectHideFlags: 0
