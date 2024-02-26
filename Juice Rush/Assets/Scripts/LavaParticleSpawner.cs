@@ -45,11 +45,7 @@ public class LavaParticleSpawner : MonoBehaviour
             area.max.y,
             Random.Range(area.min.z, area.max.z));
 
-
-
-
             GameObject particle = Instantiate(lavaParticle, randomPosition, Quaternion.identity);
-
 
             //Randomize the scale of the particle prefab
             Vector3 randomScale = new Vector3(
