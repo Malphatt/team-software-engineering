@@ -7,10 +7,8 @@ public class enemyController : MonoBehaviour
 {
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    //Explosive/Shotgun enemy AI scripts will be rewritten/fixed as I realized too late that NavMeshAgent blocks the manual rotation i.e LootAtPlayer, specifically the rotation up/down, which is crucial. Apologies for the delay.
-    //TODO: TakeDamage/Fix issue mentioned abov
-    //IF this enemy is merged before being fixed. Set maxDistanc and attackRange to higher values and turn off the navmeshagent, to test functionality in stationary mode (it will give errors)
-    //IF navmeshagent is not disabled, it will chase/attack the player but will not rotate up/down
+    //to do: TakeDamage
+    //
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //General variables
@@ -19,7 +17,8 @@ public class enemyController : MonoBehaviour
     [SerializeField] float healthPoints;
     private bool isAlive;
     Coroutine searchCoroutine;
-
+    [SerializeField] enemyRotation enemyRotationScript;
+    [SerializeField] GameObject enemyObj;
     //Idle state variables
     [SerializeField] bool isIdle;
 
@@ -46,29 +45,30 @@ public class enemyController : MonoBehaviour
     [SerializeField] float distanceToPlayer;
     [SerializeField] enemyShotgun shotgunScript;
     [SerializeField] GameObject shotgunObj;
-    
-    //Take damage variables
 
+    //Take damage variables
+    [SerializeField] Rigidbody rb;
 
     void Start()
     {
+        enemyRotationScript = enemyObj.GetComponent<enemyRotation>();
         shotgunScript = shotgunObj.GetComponent<enemyShotgun>();
         agent = GetComponent<NavMeshAgent>();
-        //agent.updateRotation = false; //Wouldn't disable it
         isAlive = true;
         isSearching = false;
+        rb = GetComponent<Rigidbody>();
     }
-
     void Update()
     {
-        //Get distance from enemy to player
+
         distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
         if (isAlive)
         {
-            //Check if the player is detected or within view
             if (playerDetected || IsPlayerDetected())
             {
+                agent.updateRotation = false;
+                enemyRotationScript.shotgunEnemyRotation(player);
                 playerDetected = true; //Bool set to true, to continously chase/attack the player regardless of whether its in FOV
                 //If in attack range, attack
                 if (distanceToPlayer <= stopRange)
@@ -80,7 +80,7 @@ public class enemyController : MonoBehaviour
 
                     }
                 }
-                    //If in stopping range stop moving
+                //If in stopping range stop moving
                 else
                 {
                     agent.isStopped = false;
@@ -89,6 +89,7 @@ public class enemyController : MonoBehaviour
             }
             else
             {
+                agent.updateRotation = true;
                 //If player is not detected, continue patrolling
                 Patrol();
             }
@@ -127,8 +128,8 @@ public class enemyController : MonoBehaviour
     //Will be changed as not behaving too well
     void Chase()
     {
+        //agent.updateRotation = false;
         //Rotates the enemy towards the player
-        LookAtPlayer();
 
         //Is the coroutine is running, stop the coroutine
         if (searchCoroutine != null)
@@ -139,13 +140,15 @@ public class enemyController : MonoBehaviour
         //Set navmeshagent speed to chaseSpeed
         agent.speed = chaseSpeed;
         //Set agent destination to player position
+        
         agent.destination = player.position;
         agent.isStopped = false;
     }
 
     void Attack()
     {
-        LookAtPlayer();
+        
+        //LookAtPlayer();
         if (searchCoroutine != null)
         {
             StopCoroutine(searchCoroutine);
@@ -157,7 +160,7 @@ public class enemyController : MonoBehaviour
     //Maintain the distance of an enemy towards the player
     void MaintainDistance()
     {
-        if (distanceToPlayer < stopRange * 0.80)
+        if (distanceToPlayer < stopRange * 0.95)
         {
             Vector3 awayFromPlayer = transform.position - player.position;
             
@@ -209,18 +212,6 @@ public class enemyController : MonoBehaviour
         //Increments the waypoint index and resets back to 0 when the list of waypoints if finished
         currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Count;
     }
-
-    void LookAtPlayer()
-    {
-        //Get the direction to player
-        Vector3 direction = (player.position - transform.position);
-        Debug.Log("Direction to Player: " + direction); //Testing
-        //Determines the rotation towards the player 
-        Quaternion lookRotation = Quaternion.LookRotation(direction);
-        //Rotates towards the player using Slerp method to make it more smooth
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * aimSpeed);
-    }
-
     bool IsPlayerDetected()
     {
         return IsPlayerInView() && HasLineOfSight();

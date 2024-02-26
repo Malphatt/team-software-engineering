@@ -7,10 +7,7 @@ public class explosiveEnemyController : MonoBehaviour
 {
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    //Explosive/Shotgun enemy AI scripts will be rewritten/fixed as I realized too late that NavMeshAgent blocks the manual rotation i.e LootAtPlayer, specifically the rotation up/down, which is crucial. Apologies for the delay.
     //TODO: Area damage/TakeDamage
-    //IF this enemy is merged before being fixed. Set maxDistance, attackRange  to higher values and turn off the navmeshagent, to test functionality in stationary mode (it will give errors)
-    //IF navmeshagent is not disables, it will chase/attack the player but will not rotate up/down nor be able to jump
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //General variables
@@ -32,9 +29,10 @@ public class explosiveEnemyController : MonoBehaviour
     [SerializeField] float maxDistance;
     [SerializeField] float horizontalFOV;
     [SerializeField] float verticalFOV;
+    private bool playerDetected = false;
 
     //Chase variables
-
+    bool canChase = false;
 
     //Attack variables
     [SerializeField] float attackRange;
@@ -45,10 +43,10 @@ public class explosiveEnemyController : MonoBehaviour
     [SerializeField] float horizontalForce;
     [SerializeField] bool hasJumped;
     [SerializeField] bool grounded;
-    float jumpForceMin = 10f;
-    float jumpForceMax = 20f;
-    float horizontalForceMin = 10f;
-    float horizontalForceMax = 20f;
+    //float jumpForceMin = 15f;
+    //float jumpForceMax = 20f;
+    //float horizontalForceMin = 15f;
+    //float horizontalForceMax = 25f;
 
     //Explosion variabes
     [SerializeField] GameObject minionPrefab;
@@ -79,12 +77,14 @@ public class explosiveEnemyController : MonoBehaviour
 
         if (isAlive)
         {
-            if (IsPlayerInView())
+            if (IsPlayerDetected() || playerDetected)
             {
+                playerDetected = true;
                 Chase();
 
                 if (distanceToPlayer <= attackRange && !hasJumped)
                 {
+                    agent.enabled = false;
                     Attack();
                     hasJumped = true; // Set the flag so it won't jump again
                 }
@@ -120,8 +120,8 @@ public class explosiveEnemyController : MonoBehaviour
 
     void Attack()
     {
-        jumpForce = Random.Range(jumpForceMin, jumpForceMax);
-        horizontalForce = Random.Range(horizontalForceMin, horizontalForceMax);
+        jumpForce = attackRange * 1.7f;//Random.Range(jumpForceMin, jumpForceMax);
+        horizontalForce = attackRange * 2f;
         Vector3 horizontalDirection = (player.position - transform.position).normalized;
         Vector3 force = horizontalDirection * horizontalForce + Vector3.up * jumpForce;
         rb.AddForce(force, ForceMode.Impulse);
@@ -146,11 +146,9 @@ public class explosiveEnemyController : MonoBehaviour
 
         Destroy(gameObject);
     }
-    void LookAtPlayer()
+    bool IsPlayerDetected()
     {
-        Vector3 direction = player.position - transform.position;
-        Quaternion lookRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * aimSpeed);
+        return IsPlayerInView() && HasLineOfSight();
     }
     bool IsPlayerInView()
     {
@@ -174,6 +172,26 @@ public class explosiveEnemyController : MonoBehaviour
                 {
                     return true;
                 }
+            }
+        }
+        return false;
+    }
+    bool HasLineOfSight()
+    {
+        RaycastHit hit;
+        Vector3 directionToPlayer = (player.position - transform.position).normalized;
+        //LayerMasks which the raycast will ignore
+        int bulletLayer = 1 << LayerMask.NameToLayer("Bullet");
+        int enemyLayer = 1 << LayerMask.NameToLayer("Enemy");
+        int weaponLayer = 1 << LayerMask.NameToLayer("Weapon");
+        int excludingLayerMask = ~(bulletLayer | enemyLayer | weaponLayer);
+        //Raycasts towards the player, ignoring specified layers
+        if (Physics.Raycast(transform.position, directionToPlayer, out hit, maxDistance, excludingLayerMask))
+        {
+            if (hit.collider.gameObject == player.gameObject)
+            {
+                //Return true if there is like of sight to the player
+                return true;
             }
         }
         return false;
