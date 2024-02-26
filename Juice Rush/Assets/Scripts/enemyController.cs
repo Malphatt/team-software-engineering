@@ -5,11 +5,20 @@ using UnityEngine.AI;
 
 public class enemyController : MonoBehaviour
 {
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //Explosive/Shotgun enemy AI scripts will be rewritten/fixed as I realized too late that NavMeshAgent blocks the manual rotation i.e LootAtPlayer, specifically the rotation up/down, which is crucial. Apologies for the delay.
+    //TODO: TakeDamage/Fix issue mentioned abov
+    //IF this enemy is merged before being fixed. Set maxDistanc and attackRange to higher values and turn off the navmeshagent, to test functionality in stationary mode (it will give errors)
+    //IF navmeshagent is not disabled, it will chase/attack the player but will not rotate up/down
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //General variables
     private NavMeshAgent agent;
     [SerializeField] Transform player;
     [SerializeField] float healthPoints;
     private bool isAlive;
+    Coroutine searchCoroutine;
 
     //Idle state variables
     [SerializeField] bool isIdle;
@@ -20,7 +29,7 @@ public class enemyController : MonoBehaviour
 
     //Patrol/PlayerSearch state variables
     [SerializeField] List<Transform> waypoints;
-    [SerializeField] int currentWaypointIndex = 0;
+    int currentWaypointIndex = 0; 
     [SerializeField] float waypointTolerance;
     [SerializeField] List<int> searchWaypoints;
     [SerializeField] bool isSearching;
@@ -32,31 +41,55 @@ public class enemyController : MonoBehaviour
 
     //Attack variables
     [SerializeField] float attackRange;
-    [SerializeField] float attackCooldown;
+    [SerializeField] float stopRange;
     [SerializeField] float aimSpeed;
+    [SerializeField] float distanceToPlayer;
+    [SerializeField] enemyShotgun shotgunScript;
+    [SerializeField] GameObject shotgunObj;
+    
+    //Take damage variables
 
 
     void Start()
     {
+        shotgunScript = shotgunObj.GetComponent<enemyShotgun>();
         agent = GetComponent<NavMeshAgent>();
+        //agent.updateRotation = false; //Wouldn't disable it
         isAlive = true;
         isSearching = false;
     }
 
     void Update()
     {
+        //Get distance from enemy to player
+        distanceToPlayer = Vector3.Distance(transform.position, player.position);
+
         if (isAlive)
         {
-            if (playerDetected || IsPlayerInView())
+            //Check if the player is detected or within view
+            if (playerDetected || IsPlayerDetected())
             {
-                //Boolean to keep the enemy chasing after it is detected
-                playerDetected = true;
-                Chase();
+                playerDetected = true; //Bool set to true, to continously chase/attack the player regardless of whether its in FOV
+                //If in attack range, attack
+                if (distanceToPlayer <= stopRange)
+                {
+                    MaintainDistance();
+                    if (distanceToPlayer <= attackRange)
+                    {
+                        Attack();
 
+                    }
+                }
+                    //If in stopping range stop moving
+                else
+                {
+                    agent.isStopped = false;
+                    Chase();
+                }
             }
             else
             {
-                //If enemy is not detected or is out of enemy's fov, patrol
+                //If player is not detected, continue patrolling
                 Patrol();
             }
         }
@@ -71,14 +104,18 @@ public class enemyController : MonoBehaviour
     void Patrol()
     {
         //Checks if the enemy has reached its current waypoint and is not currently calculating the path
-        if (agent.remainingDistance <= waypointTolerance && !agent.pathPending)
+        if (!agent.pathPending && agent.remainingDistance <= waypointTolerance)
         {
             //if the searchWaipoints int value matches patrol waypoint index, it will stop and search of the player
             if (searchWaypoints.Contains(currentWaypointIndex))
             {
                 if (!isSearching)
                 {
-                    StartCoroutine(SearchPlayer());
+                    if (searchCoroutine != null)
+                    {
+                        StopCoroutine(searchCoroutine);
+                    }
+                    searchCoroutine = StartCoroutine(SearchPlayer());
                 }
             }
             else
@@ -90,22 +127,45 @@ public class enemyController : MonoBehaviour
     //Will be changed as not behaving too well
     void Chase()
     {
-        Vector3 direction = (player.position - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        //Rotates the enemy towards the player
+        LookAtPlayer();
 
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * aimSpeed);
-        //Change navmeshagent speed to chaseSpeed
+        //Is the coroutine is running, stop the coroutine
+        if (searchCoroutine != null)
+        {
+            StopCoroutine(searchCoroutine);
+            searchCoroutine = null;
+        }
+        //Set navmeshagent speed to chaseSpeed
         agent.speed = chaseSpeed;
-        //Change agent destination to player position
+        //Set agent destination to player position
         agent.destination = player.position;
         agent.isStopped = false;
     }
 
     void Attack()
     {
-
+        LookAtPlayer();
+        if (searchCoroutine != null)
+        {
+            StopCoroutine(searchCoroutine);
+            searchCoroutine = null;
+        }
+        //Triggers the shootgun firing method
+        shotgunScript.FireShotgun();
     }
-    //will be redone
+    //Maintain the distance of an enemy towards the player
+    void MaintainDistance()
+    {
+        if (distanceToPlayer < stopRange * 0.80)
+        {
+            Vector3 awayFromPlayer = transform.position - player.position;
+            
+            Vector3 position = player.position + awayFromPlayer * stopRange;
+            agent.SetDestination(position);
+        }
+    }
+    //Coroutine for rotating one place on a SearchWaypoint
     IEnumerator SearchPlayer()
     {
         // Set the rotationDuration to manipulate the speed of the rotation 
@@ -113,9 +173,10 @@ public class enemyController : MonoBehaviour
         isSearching = true;
         agent.isStopped = true;
 
-        Quaternion originalRotation = transform.rotation;
-        Quaternion rightRotation = originalRotation * Quaternion.Euler(0, 60, 0);
-        Quaternion leftRotation = rightRotation * Quaternion.Euler(0, -120, 0);
+
+        Quaternion originalRotation = transform.rotation; //Original rotation
+        Quaternion rightRotation = originalRotation * Quaternion.Euler(0, 60, 0);//Set the rotation towards right to 60 degrees
+        Quaternion leftRotation = rightRotation * Quaternion.Euler(0, -120, 0);//Set the rotation towards left to -120 degrees
 
         //Rotate 60 degrees to the right
         for (float i = 0; i < 1; i += Time.deltaTime / rotationDuration)
@@ -135,7 +196,6 @@ public class enemyController : MonoBehaviour
         }
 
         yield return new WaitForSeconds(1f);
-
         //Continue with normal behavior
         isSearching = false;
         agent.isStopped = false;
@@ -144,15 +204,28 @@ public class enemyController : MonoBehaviour
 
     void MoveToWaypoint()
     {
+        //Sets the destination to the current wapoint
         agent.destination = waypoints[currentWaypointIndex].position;
+        //Increments the waypoint index and resets back to 0 when the list of waypoints if finished
         currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Count;
+    }
+
+    void LookAtPlayer()
+    {
+        //Get the direction to player
+        Vector3 direction = (player.position - transform.position);
+        Debug.Log("Direction to Player: " + direction); //Testing
+        //Determines the rotation towards the player 
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        //Rotates towards the player using Slerp method to make it more smooth
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * aimSpeed);
     }
 
     bool IsPlayerDetected()
     {
         return IsPlayerInView() && HasLineOfSight();
     }
-
+    //Method to check if the player is in view
     bool IsPlayerInView()
     {
         Vector3 directionToPlayer = (player.position - transform.position).normalized;
@@ -179,19 +252,24 @@ public class enemyController : MonoBehaviour
         }
         return false;
     }
-
+    //Method to check if there is a direct line of sight towards the player
     bool HasLineOfSight()
     {
         RaycastHit hit;
         Vector3 directionToPlayer = (player.position - transform.position).normalized;
         //LayerMasks which the raycast will ignore
-        int bulletLayerMask = 1 << LayerMask.NameToLayer("Bullet");
-        int enemyLayerMask = 1 << LayerMask.NameToLayer("Enemy");
-        int weaponLayerMask = 1 << LayerMask.NameToLayer("Weapon");
-        int layerMask = ~(bulletLayerMask | enemyLayerMask | weaponLayerMask);
-        if (Physics.Raycast(transform.position, directionToPlayer, out hit, maxDistance, layerMask))
+        int bulletLayer = 1 << LayerMask.NameToLayer("Bullet");
+        int enemyLayer = 1 << LayerMask.NameToLayer("Enemy");
+        int weaponLayer = 1 << LayerMask.NameToLayer("Weapon");
+        int excludingLayerMask = ~(bulletLayer | enemyLayer | weaponLayer);
+        //Raycasts towards the player, ignoring specified layers
+        if (Physics.Raycast(transform.position, directionToPlayer, out hit, maxDistance, excludingLayerMask))
         {
-            return hit.transform == player;
+            if (hit.collider.gameObject == player.gameObject)
+            {   
+                //Return true if there is like of sight to the player
+                return true;
+            }
         }
         return false;
     }
@@ -235,9 +313,6 @@ public class enemyController : MonoBehaviour
             Gizmos.DrawRay(origin, verticalDownRotation * verticalDirection * maxDistance);
             Gizmos.DrawRay(origin, verticalUpRotation * verticalDirection * maxDistance);
         }
-
-        //Draw lines to connect the ends of the rays, forming the edges of the view cone
-        //This part is simplified; for a complete view cone, you'd need to calculate and connect all edge points
         Gizmos.DrawLine(origin, origin + horizontalLeftRotation * transform.forward * maxDistance);
         Gizmos.DrawLine(origin, origin + horizontalRightRotation * transform.forward * maxDistance);
         Gizmos.DrawLine(origin, origin + verticalUpRotation * transform.forward * maxDistance);
