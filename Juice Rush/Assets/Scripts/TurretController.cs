@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class TurretController : MonoBehaviour
 {
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //TODO: Accuracy/TakeDamage
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //Rotation variables
     [SerializeField] float rotationDuration;
     [SerializeField] float waitTime;
@@ -24,7 +29,7 @@ public class TurretController : MonoBehaviour
     [SerializeField] float accuracy; //to do, not sure how to implement yet
     [SerializeField] float shotForce;
 
-    private Coroutine rotateCoroutine;
+    Coroutine rotateCoroutine;
     // Start is called before the first frame update
     void Start()
     {
@@ -202,9 +207,6 @@ public class TurretController : MonoBehaviour
             Gizmos.DrawRay(origin, verticalDownRotation * verticalDirection * maxDistance);
             Gizmos.DrawRay(origin, verticalUpRotation * verticalDirection * maxDistance);
         }
-
-        // Draw lines to connect the ends of the rays, forming the edges of the view cone
-        // This part is simplified; for a complete view cone, you'd need to calculate and connect all edge points
         Gizmos.DrawLine(origin, origin + horizontalLeftRotation * transform.forward * maxDistance);
         Gizmos.DrawLine(origin, origin + horizontalRightRotation * transform.forward * maxDistance);
         Gizmos.DrawLine(origin, origin + verticalUpRotation * transform.forward * maxDistance);

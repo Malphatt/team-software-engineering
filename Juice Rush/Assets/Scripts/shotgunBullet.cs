@@ -7,20 +7,18 @@ public class shotgunBullet : MonoBehaviour
     [SerializeField] float damage;
     //using a test player script
     private testingPlayerHealth tps;
-    float lifeTime = 4f;
+    float lifeTime = 3f;
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            //Apply damage to a test player (current player controller has no health?)
+            //Apply damage to a test player (current player controller has no health)
             tps = other.gameObject.GetComponent<testingPlayerHealth>();
-            if (tps != null)
-            {
-                tps.TakeDamage(damage);
-                Debug.Log("Destroyed?");
-                Destroy(gameObject);
-            }
+            tps.TakeDamage(damage);
+            Debug.Log("Destroyed?");
+            Destroy(gameObject);
         }
+
     }
     // Start is called before the first frame update
     void Start()
