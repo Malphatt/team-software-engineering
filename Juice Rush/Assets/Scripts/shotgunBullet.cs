@@ -12,20 +12,19 @@ public class shotgunBullet : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            //Apply damage to a test player (current player controller has no health)
+            //Apply damage to a test player
             tps = other.gameObject.GetComponent<testingPlayerHealth>();
             tps.TakeDamage(damage);
             Debug.Log("Destroyed?");
             Destroy(gameObject);
         }
+        //When merged to main level, make an environment tag for walls, floor, etc
+        //else if (other.gameObject.CompareTag("Environment"))
+        //{
+        //    Destroy(gameObject);
+        //}
 
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
