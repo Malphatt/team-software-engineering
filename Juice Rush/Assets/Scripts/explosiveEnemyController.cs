@@ -7,7 +7,7 @@ public class explosiveEnemyController : MonoBehaviour
 {
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    //TODO: Area damage/TakeDamage
+    //TODO: Area damage
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //General variables
@@ -52,6 +52,17 @@ public class explosiveEnemyController : MonoBehaviour
     [SerializeField] GameObject minionPrefab;
     int numberOfMinions;
     public bool canSpawnMinions = true;
+
+
+    public void ExplosiveEnemyTakeDamage(float damagePoints)
+    {
+        health -= damagePoints;
+        if (health < 0f)
+        {
+            Debug.Log("EETD damaged");
+            Explode();
+        }
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -99,6 +110,12 @@ public class explosiveEnemyController : MonoBehaviour
 
     void Patrol()
     {
+        //Used mainly for the minions, as when they spawn they have no waypoints assigned
+        if (waypoints == null || waypoints.Count == 0)
+        {
+            Chase();
+            return;
+        }
         //Checks if the enemy has reached its current waypoint and is not currently calculating the path
         if (!agent.pathPending && agent.remainingDistance <= waypointTolerance)
         {

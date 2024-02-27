@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class TurretController : MonoBehaviour
 {
-    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    //TODO: Accuracy/TakeDamage
-    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //Rotation variables
     [SerializeField] float rotationDuration;
     [SerializeField] float waitTime;
@@ -68,10 +63,14 @@ public class TurretController : MonoBehaviour
         if (Time.time > fireTime)
         {
             GameObject projectile = Instantiate(projectilePrefab, gunMuzzle.position, gunMuzzle.rotation);
-
             Rigidbody rb = projectile.GetComponent<Rigidbody>();
 
-            rb.AddForce(gunMuzzle.forward * shotForce);
+            float spreadAngleX = Random.Range(-accuracy, accuracy);
+            float spreadAngleY = Random.Range(-accuracy, accuracy);
+
+            Vector3 spreadShotDirection = Quaternion.Euler(spreadAngleX, spreadAngleY, 0) * gunMuzzle.forward;
+
+            rb.AddForce(spreadShotDirection * shotForce, ForceMode.Impulse);
             fireTime = Time.time + fireRate;
         }
     }

@@ -25,14 +25,6 @@ public class LavaParticleDamage : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
         //destroy the object based on lifetime in case it doesn't destroy with any other collider for some reason

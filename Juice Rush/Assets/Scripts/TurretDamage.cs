@@ -5,18 +5,18 @@ using UnityEngine;
 public class TurretDamage : MonoBehaviour
 {
     [SerializeField] float damage;
+    //using a test player script
     private testingPlayerHealth tps;
     float lifeTime = 4f;
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            //Apply damage to player (current player controller has no health?)
+            //Apply damage to player
             tps = other.gameObject.GetComponent<testingPlayerHealth>();
             if (tps != null)
             {
                 tps.TakeDamage(damage);
-                Debug.Log("Destroyed?");
                 Destroy(gameObject);
             }
         }
