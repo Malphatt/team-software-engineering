@@ -6,7 +6,8 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     [SerializeField] private GunData gunData;
-    [SerializeField] private Transform muzzle;
+    [SerializeField] private GameObject Bullet;
+    [SerializeField] private Transform FirePosition;
     [SerializeField] private Transform playerCamera;
 
     float timeSinceLastShot;
@@ -40,11 +41,7 @@ public class Gun : MonoBehaviour
         {
             if (CanShoot())
             {
-                if(Physics.Raycast(muzzle.position, transform.forward, out RaycastHit hitInfo, gunData.maxDistance))
-                {
-                    Debug.Log(hitInfo.transform.name);
-                }
-
+                Instantiate(Bullet, FirePosition.transform.position, FirePosition.transform.rotation);
                 gunData.currentAmmo--;
                 timeSinceLastShot = 0;
                 OnGunShot();
@@ -59,7 +56,7 @@ public class Gun : MonoBehaviour
         transform.rotation = playerCamera.transform.rotation;
 
         //visualisation of raycast for gun
-        Debug.DrawRay(muzzle.position, muzzle.forward * 100);
+        Debug.DrawRay(FirePosition.position, FirePosition.forward * 100);
     }
 
     private void OnGunShot()
