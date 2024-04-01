@@ -2399,6 +2399,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animation1: {fileID: 7787043856069406958, guid: 6133a3327e53a8248996f62c47f9fc03, type: 3}
   animation2: {fileID: 7787043856069406958, guid: be451f56c7989094ebd4859ed0b35f59, type: 3}
+  juiciness: 3
+  mat: {fileID: 2100000, guid: 400cb168caa4a734eabe5f51e6b4b1cd, type: 2}
   katana: {fileID: 2431660532347636484}
 --- !u!1 &2132596176
 GameObject:
@@ -2658,7 +2660,7 @@ GameObject:
   - component: {fileID: 5964209143807445678}
   - component: {fileID: 4718253574415641262}
   m_Layer: 0
-  m_Name: Cylinder.002
+  m_Name: BladeGuard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2912,7 +2914,7 @@ GameObject:
   - component: {fileID: 7424177510601739792}
   - component: {fileID: 5659912255933218954}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2989,7 +2991,7 @@ GameObject:
   - component: {fileID: 7456230286208744517}
   - component: {fileID: 1333017228222095514}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Blade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3220,7 +3222,7 @@ GameObject:
   - component: {fileID: 1474952824544257604}
   - component: {fileID: 5719137007609110255}
   m_Layer: 0
-  m_Name: Cylinder.001
+  m_Name: BottomHandle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3254,7 +3256,7 @@ GameObject:
   - component: {fileID: 8182244533375870471}
   - component: {fileID: 2396587755437811984}
   m_Layer: 0
-  m_Name: Plane.001
+  m_Name: HandleWrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
