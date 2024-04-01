@@ -142,6 +142,9 @@ MonoBehaviour:
   hasJumped: 0
   jumpForceMultiplier: 3
   minionPrefab: {fileID: 800321570100693949}
+  explosionRadius: 3
+  explosionMaxDamage: 50
+  tps: {fileID: 0}
   canSpawnMinions: 1
   explosionTriggerDistance: 5
   explosionDelay: 2.5
