@@ -5,11 +5,6 @@ using UnityEngine.AI;
 
 public class explosiveEnemyController : MonoBehaviour
 {
-    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    //TODO: Area damage
-    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //General variables
     NavMeshAgent agent;
     [SerializeField] Transform player;
@@ -42,6 +37,10 @@ public class explosiveEnemyController : MonoBehaviour
 
     //Explosion variabes
     [SerializeField] GameObject minionPrefab;
+    [SerializeField] float explosionRadius;
+    [SerializeField] float explosionMaxDamage;
+    float calcDamage;
+    [SerializeField] private testingPlayerHealth tps;
     int numberOfMinions;
     public bool canSpawnMinions = true;
     //Preferably longer distance than attackRange
@@ -49,6 +48,7 @@ public class explosiveEnemyController : MonoBehaviour
     [SerializeField] float explosionDelay = 2.5f;
     private bool aboutToExplode = false;
     private float explosionTimer;
+
 
 
     public void ExplosiveEnemyTakeDamage(float damagePoints)
@@ -111,7 +111,7 @@ public class explosiveEnemyController : MonoBehaviour
             if(aboutToExplode)
             {
                 explosionTimer -= Time.deltaTime;
-                Debug.Log(explosionTimer);//testing
+                
                 {
                     if (explosionTimer <= 0f)
                     {
@@ -172,6 +172,14 @@ public class explosiveEnemyController : MonoBehaviour
     void Explode()
     {
         numberOfMinions = Random.Range(2, 4);
+
+        if (distanceToPlayer <= explosionRadius)
+        {
+            calcDamage = Mathf.Max(0f, explosionMaxDamage * (1 - distanceToPlayer / explosionRadius));
+            tps.TakeDamage(calcDamage);
+            Debug.Log(calcDamage);
+        }
+        
         //Will work only if the enemy can spawn minions, if not, then it is a minion
         if (canSpawnMinions)
         {
@@ -182,8 +190,11 @@ public class explosiveEnemyController : MonoBehaviour
                 spawnPosition.y = 1f;
 
                 GameObject minion = Instantiate(minionPrefab, spawnPosition, transform.rotation);
+                explosiveEnemyController minionScr = minion.GetComponent<explosiveEnemyController>();
+                //Changing bool to false specifically for minions, and assigning player/player health script for minion prefabs, which were initially assigned to the explosive enemy
                 minion.GetComponent<explosiveEnemyController>().canSpawnMinions = false;
                 minion.GetComponent<explosiveEnemyController>().player = player;
+                minion.GetComponent<explosiveEnemyController>().tps = this.tps;
             }
         }
         //room for animation/effect

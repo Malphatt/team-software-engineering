@@ -67,13 +67,15 @@ MonoBehaviour:
   attackRange: 6
   stopRange: 6
   distanceToPlayer: 0
-  aimSpeed: 2
-  jumpForce: 15
-  horizontalForce: 15
   hasJumped: 0
-  grounded: 0
+  jumpForceMultiplier: 0
   minionPrefab: {fileID: 800321570100693949, guid: 860ea536821251846bf1acef94cd93f7, type: 3}
+  explosionRadius: 5
+  explosionMaxDamage: 70
+  tps: {fileID: 0}
   canSpawnMinions: 1
+  explosionTriggerDistance: 5
+  explosionDelay: 2.5
 --- !u!33 &1030748292803129952
 MeshFilter:
   m_ObjectHideFlags: 0
