@@ -1,0 +1,139 @@
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.InputSystem;
+public class katanaScript : MonoBehaviour
+{
+    float timer;
+    float timer2;
+    bool timerOn;
+    bool chargedAttack;
+    Quaternion rot;
+    public GameObject animation1;
+    public GameObject animation2;
+    public int juiciness;
+    public Material mat;
+    [SerializeField] GameObject katana;
+
+    public void Attack(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            // katana.GetComponent<Animator>().Set("Hold");
+            timer = 0;
+            timerOn = true;
+            if(katana.GetComponent<Animator>().GetFloat("timePassed") > 0.95f)
+            {
+                katana.GetComponent<Animator>().SetBool("swing1", false);
+                katana.GetComponent<Animator>().SetBool("swing2", false);
+                katana.GetComponent<Animator>().SetFloat("timePassed", 0);
+            }
+        }
+        if (context.canceled && !katana.GetComponent<Animator>().GetBool("swing1"))
+        {
+            rot = this.gameObject.transform.rotation;
+            katana.GetComponent<Animator>().SetBool("swing1", true);
+            katana.GetComponent<Animator>().SetBool("swing2", false);
+            katana.GetComponent<Animator>().SetFloat("timePassed", 0);
+            StartCoroutine(WaitOneTenth1());
+            ParticlesHit(timer);
+
+            timerOn = false;
+            timer2 = 0;
+        }
+        else if (context.canceled && katana.GetComponent<Animator>().GetBool("swing1"))
+        {
+            rot = this.gameObject.transform.rotation;
+            katana.GetComponent<Animator>().SetBool("swing2", true);
+            katana.GetComponent<Animator>().SetBool("swing1", false);
+            katana.GetComponent<Animator>().SetFloat("timePassed", 0);
+            StartCoroutine(WaitOneTenth2());
+            ParticlesHit(timer);
+            timerOn = false;
+            timer2 = 0;
+        }
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+        katana.GetComponent<Animator>().SetFloat("timePassed", 0);
+        if (juiciness != 1 && juiciness != 2 && juiciness != 3)
+        {
+            juiciness = 3;
+        }
+        else if (juiciness == 1)
+        {
+            GameObject.Find("Handle").GetComponent<MeshRenderer>().material = mat;
+            GameObject.Find("Blade").GetComponent<MeshRenderer>().material = mat;
+            GameObject.Find("BottomHandle").GetComponent<MeshRenderer>().material = mat;
+            GameObject.Find("BladeGuard").GetComponent<MeshRenderer>().material = mat;
+            GameObject.Find("HandleWrap").GetComponent<MeshRenderer>().material = mat;
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+         timer2 += Time.deltaTime;
+        katana.GetComponent<Animator>().SetFloat("timePassed", timer2);
+        if (katana.GetComponent<Animator>().GetFloat("timePassed") > 0.95f)
+        {
+            timer2 = 0;
+            katana.GetComponent<Animator>().SetBool("swing1", false);
+            katana.GetComponent<Animator>().SetBool("swing2", false);
+        }
+        if (timerOn)
+        {
+            timer += Time.deltaTime;
+            if (timer > 0.5f)
+            {
+                ParticlesHold(timer);
+                chargedAttack = true;
+            }
+            else
+            {
+                chargedAttack = false;
+            }
+        }
+        else
+        {
+            timer = 0;
+            chargedAttack = false;
+        }
+    }
+    void ParticlesHold(float amount)
+    {
+        if (chargedAttack)
+        {
+
+        }
+    }
+    void ParticlesHit(float amount)
+    {
+        if (chargedAttack)
+        {
+            // Charged attack, timer amount of particles
+        }
+        else
+        {
+            // Normal attack
+        }
+    }
+    IEnumerator WaitOneTenth1()
+    {
+        yield return new WaitForSeconds(0.05f);
+        if (juiciness == 3)
+        {
+            Instantiate(animation1, this.gameObject.transform.position + new Vector3(0, -0.1f, 0), new Quaternion(rot.x, this.rot.y, rot.z, rot.w));
+        }
+    }
+    IEnumerator WaitOneTenth2()
+    {
+        yield return new WaitForSeconds(0.05f);
+        if(juiciness == 3)
+        {
+            Instantiate(animation2, this.gameObject.transform.position + new Vector3(0, -0.1f, 0), new Quaternion(rot.x, this.rot.y, rot.z, rot.w));
+        }
+    }
+}
