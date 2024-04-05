@@ -105,7 +105,6 @@ public class playerController : MonoBehaviour
                 // If the player is grounded and not moving, apply normal friction
                 velocity.x = velocity.x * friction;
                 velocity.z = velocity.z * friction;
-
             }
         }
         else

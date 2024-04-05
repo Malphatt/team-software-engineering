@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aead692cf33c00b42965d9cc297cade6, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: 
-  name: 
+  name: Pistol
   damage: 10
   maxDistance: 200
   currentAmmo: 6

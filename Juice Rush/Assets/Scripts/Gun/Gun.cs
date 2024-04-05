@@ -53,7 +53,7 @@ public class Gun : MonoBehaviour
         timeSinceLastShot += Time.deltaTime;
 
         //makes the gun follow the camera's rotation 
-        transform.rotation = playerCamera.transform.rotation;
+        //transform.rotation = playerCamera.transform.rotation;
 
         //visualisation of raycast for gun
         Debug.DrawRay(FirePosition.position, FirePosition.forward * 100);
