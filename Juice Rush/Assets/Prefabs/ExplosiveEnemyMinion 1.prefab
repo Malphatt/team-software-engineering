@@ -129,31 +129,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ffd9fff30d3cf045a2bbef8cb358252, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 4493268182907755634, guid: de5c889b7692a9647a5c1ff0bfcdc2c0, type: 3}
-  health: 0
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  player: {fileID: 755596609578404955, guid: 8a01d5bf35e0e6b48a12844e9061dbd6, type: 3}
+  health: 50
+  waypoints: []
   waypointTolerance: 0
   maxDistance: 10
   horizontalFOV: 360
   verticalFOV: 360
-  attackRange: 6
+  attackRange: 4
   stopRange: 6
   distanceToPlayer: 0
-  aimSpeed: 2
-  jumpForce: 10
-  horizontalForce: 10
   hasJumped: 0
-  grounded: 0
+  jumpForceMultiplier: 3
   minionPrefab: {fileID: 800321570100693949}
+  explosionRadius: 3
+  explosionMaxDamage: 50
+  tps: {fileID: 0}
   canSpawnMinions: 1
+  explosionTriggerDistance: 5
+  explosionDelay: 2.5
 --- !u!195 &800321570100693922
 NavMeshAgent:
   m_ObjectHideFlags: 0

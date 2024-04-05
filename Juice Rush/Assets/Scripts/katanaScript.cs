@@ -9,8 +9,11 @@ public class katanaScript : MonoBehaviour
     float timer2;
     bool timerOn;
     bool chargedAttack;
+    Quaternion rot;
     public GameObject animation1;
     public GameObject animation2;
+    public int juiciness;
+    public Material mat;
     [SerializeField] GameObject katana;
 
     public void Attack(InputAction.CallbackContext context)
@@ -29,10 +32,11 @@ public class katanaScript : MonoBehaviour
         }
         if (context.canceled && !katana.GetComponent<Animator>().GetBool("swing1"))
         {
+            rot = this.gameObject.transform.rotation;
             katana.GetComponent<Animator>().SetBool("swing1", true);
-            Instantiate(animation1, this.gameObject.transform.position + new Vector3(0, -0.1f, 0), new Quaternion(this.gameObject.transform.rotation.x, this.gameObject.transform.rotation.y, this.gameObject.transform.rotation.z, this.gameObject.transform.rotation.w));
             katana.GetComponent<Animator>().SetBool("swing2", false);
             katana.GetComponent<Animator>().SetFloat("timePassed", 0);
+            StartCoroutine(WaitOneTenth1());
             ParticlesHit(timer);
 
             timerOn = false;
@@ -40,10 +44,11 @@ public class katanaScript : MonoBehaviour
         }
         else if (context.canceled && katana.GetComponent<Animator>().GetBool("swing1"))
         {
+            rot = this.gameObject.transform.rotation;
             katana.GetComponent<Animator>().SetBool("swing2", true);
-            Instantiate(animation2, this.gameObject.transform.position + new Vector3(0, -0.1f, 0), new Quaternion(this.gameObject.transform.rotation.x, this.gameObject.transform.rotation.y, this.gameObject.transform.rotation.z, this.gameObject.transform.rotation.w));
             katana.GetComponent<Animator>().SetBool("swing1", false);
             katana.GetComponent<Animator>().SetFloat("timePassed", 0);
+            StartCoroutine(WaitOneTenth2());
             ParticlesHit(timer);
             timerOn = false;
             timer2 = 0;
@@ -53,6 +58,18 @@ public class katanaScript : MonoBehaviour
     void Start()
     {
         katana.GetComponent<Animator>().SetFloat("timePassed", 0);
+        if (juiciness != 1 && juiciness != 2 && juiciness != 3)
+        {
+            juiciness = 3;
+        }
+        else if (juiciness == 1)
+        {
+            GameObject.Find("Handle").GetComponent<MeshRenderer>().material = mat;
+            GameObject.Find("Blade").GetComponent<MeshRenderer>().material = mat;
+            GameObject.Find("BottomHandle").GetComponent<MeshRenderer>().material = mat;
+            GameObject.Find("BladeGuard").GetComponent<MeshRenderer>().material = mat;
+            GameObject.Find("HandleWrap").GetComponent<MeshRenderer>().material = mat;
+        }
     }
 
     // Update is called once per frame
@@ -101,6 +118,22 @@ public class katanaScript : MonoBehaviour
         else
         {
             // Normal attack
+        }
+    }
+    IEnumerator WaitOneTenth1()
+    {
+        yield return new WaitForSeconds(0.05f);
+        if (juiciness == 3)
+        {
+            Instantiate(animation1, this.gameObject.transform.position + new Vector3(0, -0.1f, 0), new Quaternion(rot.x, this.rot.y, rot.z, rot.w));
+        }
+    }
+    IEnumerator WaitOneTenth2()
+    {
+        yield return new WaitForSeconds(0.05f);
+        if(juiciness == 3)
+        {
+            Instantiate(animation2, this.gameObject.transform.position + new Vector3(0, -0.1f, 0), new Quaternion(rot.x, this.rot.y, rot.z, rot.w));
         }
     }
 }

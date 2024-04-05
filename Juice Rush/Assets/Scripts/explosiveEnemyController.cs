@@ -5,11 +5,6 @@ using UnityEngine.AI;
 
 public class explosiveEnemyController : MonoBehaviour
 {
-    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    //TODO: Area damage
-    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //General variables
     NavMeshAgent agent;
     [SerializeField] Transform player;
@@ -31,27 +26,29 @@ public class explosiveEnemyController : MonoBehaviour
     [SerializeField] float verticalFOV;
     private bool playerDetected = false;
 
-    //Chase variables
-    bool canChase = false;
-
     //Attack variables
     [SerializeField] float attackRange;
     [SerializeField] float stopRange;
     [SerializeField] float distanceToPlayer;
-    [SerializeField] float aimSpeed;
-    [SerializeField] float jumpForce;
-    [SerializeField] float horizontalForce;
+    float jumpForce;
+    float horizontalForce;
     [SerializeField] bool hasJumped;
-    [SerializeField] bool grounded;
-    //float jumpForceMin = 15f;
-    //float jumpForceMax = 20f;
-    //float horizontalForceMin = 15f;
-    //float horizontalForceMax = 25f;
+    [SerializeField] float jumpForceMultiplier;
 
     //Explosion variabes
     [SerializeField] GameObject minionPrefab;
+    [SerializeField] float explosionRadius;
+    [SerializeField] float explosionMaxDamage;
+    float calcDamage;
+    [SerializeField] private testingPlayerHealth tps;
     int numberOfMinions;
     public bool canSpawnMinions = true;
+    //Preferably longer distance than attackRange
+    [SerializeField] float explosionTriggerDistance;
+    [SerializeField] float explosionDelay = 2.5f;
+    private bool aboutToExplode = false;
+    private float explosionTimer;
+
 
 
     public void ExplosiveEnemyTakeDamage(float damagePoints)
@@ -66,9 +63,9 @@ public class explosiveEnemyController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (hasJumped)
+        if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("collided");
+            Debug.Log("collided with player");
             Explode();
         }
     }
@@ -78,8 +75,12 @@ public class explosiveEnemyController : MonoBehaviour
         isAlive = true;
         hasJumped = false;
         agent = GetComponent<NavMeshAgent>();
-
         rb = GetComponent<Rigidbody>();
+        //Minions having a shorter explosion delay
+        if (!canSpawnMinions)
+        {
+            explosionDelay = 1.5f;
+        }
     }
 
     void Update()
@@ -92,17 +93,31 @@ public class explosiveEnemyController : MonoBehaviour
             {
                 playerDetected = true;
                 Chase();
-
-                if (distanceToPlayer <= attackRange && !hasJumped)
+                if (distanceToPlayer <= explosionTriggerDistance && !aboutToExplode)
+                {
+                    ExplosionPreparation();
+                }
+                else if (distanceToPlayer <= attackRange && !hasJumped)
                 {
                     agent.enabled = false;
                     Attack();
-                    hasJumped = true; // Set the flag so it won't jump again
+                    hasJumped = true; 
                 }
             }
             else
             {
                 Patrol();
+            }
+            if(aboutToExplode)
+            {
+                explosionTimer -= Time.deltaTime;
+                
+                {
+                    if (explosionTimer <= 0f)
+                    {
+                        Explode();
+                    }
+                }
             }
         }
     }
@@ -137,26 +152,49 @@ public class explosiveEnemyController : MonoBehaviour
 
     void Attack()
     {
-        jumpForce = attackRange * 1.7f;//Random.Range(jumpForceMin, jumpForceMax);
-        horizontalForce = attackRange * 2f;
+        
+        jumpForce = attackRange * jumpForceMultiplier;
+        horizontalForce = attackRange * jumpForceMultiplier;
         Vector3 horizontalDirection = (player.position - transform.position).normalized;
         Vector3 force = horizontalDirection * horizontalForce + Vector3.up * jumpForce;
         rb.AddForce(force, ForceMode.Impulse);
+    }
+    //Function to be triggered when the player is in explosion prep range
+    void ExplosionPreparation()
+    {
+        aboutToExplode = true;
+        explosionTimer = explosionDelay;
+        //Room for visual/audio effects during the countdown
+        //
+        //
     }
     //On explosion, there will be minions spawned that will have less hp but higher speed (currently in testing mode)
     void Explode()
     {
         numberOfMinions = Random.Range(2, 4);
+
+        if (distanceToPlayer <= explosionRadius)
+        {
+            calcDamage = Mathf.Max(0f, explosionMaxDamage * (1 - distanceToPlayer / explosionRadius));
+            tps.TakeDamage(calcDamage);
+            Debug.Log(calcDamage);
+        }
+        
+        //Will work only if the enemy can spawn minions, if not, then it is a minion
         if (canSpawnMinions)
         {
+            //Spawns number of minions around the exploded enemy
             for (int i = 0; i < numberOfMinions; i++)
             {
                 Vector3 spawnPosition = transform.position + Random.insideUnitSphere * 5.0f;
                 spawnPosition.y = 1f;
 
                 GameObject minion = Instantiate(minionPrefab, spawnPosition, transform.rotation);
+                explosiveEnemyController minionScr = minion.GetComponent<explosiveEnemyController>();
+                //Changing bool to false specifically for minions, and assigning player/player health script for minion prefabs, which were initially assigned to the explosive enemy
                 minion.GetComponent<explosiveEnemyController>().canSpawnMinions = false;
                 minion.GetComponent<explosiveEnemyController>().player = player;
+                minion.GetComponent<explosiveEnemyController>().tps = this.tps;
             }
         }
         //room for animation/effect

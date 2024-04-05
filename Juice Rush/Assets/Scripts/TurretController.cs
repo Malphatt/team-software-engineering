@@ -21,8 +21,9 @@ public class TurretController : MonoBehaviour
     [SerializeField] float fireRate;
     float fireTime;
     [SerializeField] float aimSpeed;
-    [SerializeField] float accuracy; //to do, not sure how to implement yet
+    [SerializeField] float accuracy; 
     [SerializeField] float shotForce;
+
 
     Coroutine rotateCoroutine;
     // Start is called before the first frame update

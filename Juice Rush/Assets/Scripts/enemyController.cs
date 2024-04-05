@@ -41,7 +41,7 @@ public class enemyController : MonoBehaviour
     [SerializeField] GameObject shotgunObj;
 
     //Take damage variables
-    [SerializeField] Rigidbody rb;
+    Rigidbody rb;
 
     void Start()
     {
