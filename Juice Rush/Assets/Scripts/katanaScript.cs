@@ -1,8 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 public class katanaScript : MonoBehaviour
 {
     float timer;
@@ -14,23 +11,24 @@ public class katanaScript : MonoBehaviour
     public GameObject animation2;
     public int juiciness;
     public Material mat;
-    [SerializeField] GameObject katana;
+    [SerializeField] GameObject katana, Handle, Blade, BottomHandle, BladeGuard, HandleWrap;
 
-    public void Attack(InputAction.CallbackContext context)
+    public void StartAttack()
     {
-        if (context.started)
+        // katana.GetComponent<Animator>().Set("Hold");
+        timer = 0;
+        timerOn = true;
+        if (katana.GetComponent<Animator>().GetFloat("timePassed") > 0.95f)
         {
-            // katana.GetComponent<Animator>().Set("Hold");
-            timer = 0;
-            timerOn = true;
-            if(katana.GetComponent<Animator>().GetFloat("timePassed") > 0.95f)
-            {
-                katana.GetComponent<Animator>().SetBool("swing1", false);
-                katana.GetComponent<Animator>().SetBool("swing2", false);
-                katana.GetComponent<Animator>().SetFloat("timePassed", 0);
-            }
+            katana.GetComponent<Animator>().SetBool("swing1", false);
+            katana.GetComponent<Animator>().SetBool("swing2", false);
+            katana.GetComponent<Animator>().SetFloat("timePassed", 0);
         }
-        if (context.canceled && !katana.GetComponent<Animator>().GetBool("swing1"))
+    }
+
+    public void StopAttack()
+    {
+        if (!katana.GetComponent<Animator>().GetBool("swing1"))
         {
             rot = this.gameObject.transform.rotation;
             katana.GetComponent<Animator>().SetBool("swing1", true);
@@ -42,7 +40,7 @@ public class katanaScript : MonoBehaviour
             timerOn = false;
             timer2 = 0;
         }
-        else if (context.canceled && katana.GetComponent<Animator>().GetBool("swing1"))
+        else if (katana.GetComponent<Animator>().GetBool("swing1"))
         {
             rot = this.gameObject.transform.rotation;
             katana.GetComponent<Animator>().SetBool("swing2", true);
@@ -54,6 +52,7 @@ public class katanaScript : MonoBehaviour
             timer2 = 0;
         }
     }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,18 +63,18 @@ public class katanaScript : MonoBehaviour
         }
         else if (juiciness == 1)
         {
-            GameObject.Find("Handle").GetComponent<MeshRenderer>().material = mat;
-            GameObject.Find("Blade").GetComponent<MeshRenderer>().material = mat;
-            GameObject.Find("BottomHandle").GetComponent<MeshRenderer>().material = mat;
-            GameObject.Find("BladeGuard").GetComponent<MeshRenderer>().material = mat;
-            GameObject.Find("HandleWrap").GetComponent<MeshRenderer>().material = mat;
+            Handle.GetComponent<MeshRenderer>().material = mat;
+            Blade.GetComponent<MeshRenderer>().material = mat;
+            BottomHandle.GetComponent<MeshRenderer>().material = mat;
+            BladeGuard.GetComponent<MeshRenderer>().material = mat;
+            HandleWrap.GetComponent<MeshRenderer>().material = mat;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-         timer2 += Time.deltaTime;
+        timer2 += Time.deltaTime;
         katana.GetComponent<Animator>().SetFloat("timePassed", timer2);
         if (katana.GetComponent<Animator>().GetFloat("timePassed") > 0.95f)
         {
@@ -131,7 +130,7 @@ public class katanaScript : MonoBehaviour
     IEnumerator WaitOneTenth2()
     {
         yield return new WaitForSeconds(0.05f);
-        if(juiciness == 3)
+        if (juiciness == 3)
         {
             Instantiate(animation2, this.gameObject.transform.position + new Vector3(0, -0.1f, 0), new Quaternion(rot.x, this.rot.y, rot.z, rot.w));
         }

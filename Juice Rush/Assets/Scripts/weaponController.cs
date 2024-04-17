@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,6 +5,7 @@ public class weaponController : MonoBehaviour
 {
     [SerializeField] GameObject weaponContainer;
     private GameObject[] weaponsArray;
+    private int weaponIndex;
 
     // Weapon states
     public enum WeaponState
@@ -25,11 +24,12 @@ public class weaponController : MonoBehaviour
         {
             weaponsArray[i] = weaponContainer.transform.GetChild(i).gameObject;
         }
+        weaponIndex = 0;
     }
 
     void Update()
     {
-        
+
     }
 
     void FixedUpdate()
@@ -37,42 +37,42 @@ public class weaponController : MonoBehaviour
 
     }
 
-//TODO: Implement
+    //TODO: Implement
     public void OnAttack(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)
         {
-            Debug.Log("Attack");
+            weaponsArray[weaponIndex].GetComponent<weapon>().OnAttack("Started");
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
-            Debug.Log("Stopped Attacking");
+            weaponsArray[weaponIndex].GetComponent<weapon>().OnAttack("Canceled");
         }
     }
 
-//TODO: Implement
+    //TODO: Implement
     public void OnADS(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)
         {
-            Debug.Log("ADS");
+            weaponsArray[weaponIndex].GetComponent<weapon>().OnADS("Started");
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
-            Debug.Log("Stopped ADS");
+            weaponsArray[weaponIndex].GetComponent<weapon>().OnADS("Canceled");
         }
     }
 
-//TODO: Implement
+    //TODO: Implement
     public void OnReload(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)
         {
-            Debug.Log("Reload");
+            weaponsArray[weaponIndex].GetComponent<weapon>().OnReload("Started");
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
-            Debug.Log("Stopped Reloading");
+            weaponsArray[weaponIndex].GetComponent<weapon>().OnReload("Canceled");
         }
     }
 
@@ -83,35 +83,23 @@ public class weaponController : MonoBehaviour
         {
             Debug.Log("Swap Weapon");
         }
-        else if (context.phase == InputActionPhase.Canceled)
-        {
-            Debug.Log("Stopped Swapping Weapon");
-        }
     }
 
-//TODO: Implement
+    //TODO: Implement
     public void OnPrimaryWeapon(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)
         {
-            Debug.Log("Primary Weapon");
-        }
-        else if (context.phase == InputActionPhase.Canceled)
-        {
-            Debug.Log("Stopped Primary Weapon");
+
         }
     }
 
-//TODO: Implement
+    //TODO: Implement
     public void OnSecondaryWeapon(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)
         {
             Debug.Log("Secondary Weapon");
-        }
-        else if (context.phase == InputActionPhase.Canceled)
-        {
-            Debug.Log("Stopped Secondary Weapon");
         }
     }
 }
