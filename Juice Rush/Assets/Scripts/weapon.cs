@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class weapon : MonoBehaviour
 {
-    public string WeaponType;
+    public string WeaponName;
+    public enum WeaponTypes { Primary, Secondary }
+    public WeaponTypes WeaponType;
 
     public void OnAttack(string context)
     {
-        switch (WeaponType)
+        switch (WeaponName)
         {
             case "Katana":
                 if (context == "Started") gameObject.GetComponent<katanaScript>().StartAttack();
@@ -25,25 +27,37 @@ public class weapon : MonoBehaviour
 
     public void OnADS(string context)
     {
-        if (context == "Started")
+        switch (WeaponName)
         {
-            Debug.Log("ADS");
-        }
-        else if (context == "Canceled")
-        {
-            Debug.Log("Stopped ADS");
+            case "Katana":
+                // Do Nothing
+                break;
+            case "Gun":
+                //if (context == "Started") gameObject.GetComponent<gunScript>().StartADS();
+                //else if (context == "Canceled") gameObject.GetComponent<gunScript>().StopADS();
+                break;
+            default:
+                Debug.Log("Weapon not found");
+                break;
+
         }
     }
 
     public void OnReload(string context)
     {
-        if (context == "Started")
+        switch (WeaponName)
         {
-            Debug.Log("Reloading");
-        }
-        else if (context == "Canceled")
-        {
-            Debug.Log("Stopped Reloading");
+            case "Katana":
+                // Do Nothing
+                break;
+            case "Gun":
+                //if (context == "Started") gameObject.GetComponent<gunScript>().StartReload();
+                //else if (context == "Canceled") gameObject.GetComponent<gunScript>().StopReload();
+                break;
+            default:
+                Debug.Log("Weapon not found");
+                break;
+
         }
     }
 }

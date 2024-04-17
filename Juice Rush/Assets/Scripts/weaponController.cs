@@ -7,15 +7,6 @@ public class weaponController : MonoBehaviour
     private GameObject[] weaponsArray;
     private int weaponIndex;
 
-    // Weapon states
-    public enum WeaponState
-    {
-        primary,
-        secondary,
-        reloading,
-        swapping
-    }
-
     void Awake()
     {
         // Get all weapons in the weapon container and add them to the weapons array
@@ -37,7 +28,6 @@ public class weaponController : MonoBehaviour
 
     }
 
-    //TODO: Implement
     public void OnAttack(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)
@@ -50,7 +40,6 @@ public class weaponController : MonoBehaviour
         }
     }
 
-    //TODO: Implement
     public void OnADS(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)
@@ -63,7 +52,6 @@ public class weaponController : MonoBehaviour
         }
     }
 
-    //TODO: Implement
     public void OnReload(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)
@@ -76,30 +64,72 @@ public class weaponController : MonoBehaviour
         }
     }
 
-    //TODO: Implement
     public void OnSwapWeapon(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)
         {
-            Debug.Log("Swap Weapon");
+            if (context.ReadValue<float>() > 0)
+            {
+                // Hide the current weapon
+                weaponsArray[weaponIndex].SetActive(false);
+                // Set the new weapon index
+                weaponIndex++;
+                if (weaponIndex >= weaponsArray.Length) weaponIndex = 0;
+                // Show the new weapon
+                weaponsArray[weaponIndex].SetActive(true);
+            }
+            else
+            {
+                // Hide the current weapon
+                weaponsArray[weaponIndex].SetActive(false);
+                // Set the new weapon index
+                weaponIndex--;
+                if (weaponIndex < 0) weaponIndex = weaponsArray.Length - 1;
+                // Show the new weapon
+                weaponsArray[weaponIndex].SetActive(true);
+            }
         }
     }
 
-    //TODO: Implement
     public void OnPrimaryWeapon(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)
         {
-
+            // Find the primary weapon in the weapons array
+            for (int i = 0; i < weaponsArray.Length; i++)
+            {
+                if (weaponsArray[i].GetComponent<weapon>().WeaponType == weapon.WeaponTypes.Primary)
+                {
+                    // Hide the current weapon
+                    weaponsArray[weaponIndex].SetActive(false);
+                    // Set the new weapon index
+                    weaponIndex = i;
+                    // Show the new weapon
+                    weaponsArray[weaponIndex].SetActive(true);
+                    break;
+                }
+            }
         }
     }
 
-    //TODO: Implement
     public void OnSecondaryWeapon(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)
         {
-            Debug.Log("Secondary Weapon");
+            // Find the secondary weapon in the weapons array
+            for (int i = 0; i < weaponsArray.Length; i++)
+            {
+                if (weaponsArray[i].GetComponent<weapon>().WeaponType == weapon.WeaponTypes.Secondary)
+                {
+                    // Hide the current weapon
+                    weaponsArray[weaponIndex].SetActive(false);
+                    // Set the new weapon index
+                    weaponIndex = i;
+                    // Show the new weapon
+                    weaponsArray[weaponIndex].SetActive(true);
+                    break;
+                }
+            }
         }
     }
 }
