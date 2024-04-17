@@ -1,14 +1,12 @@
 using UnityEngine;
 
-public class weapon : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
-    public string WeaponName;
-    public enum WeaponTypes { Primary, Secondary }
-    public WeaponTypes WeaponType;
+    public WeaponData WeaponData;
 
     public void OnAttack(string context)
     {
-        switch (WeaponName)
+        switch (WeaponData.Name)
         {
             case "Katana":
                 if (context == "Started") gameObject.GetComponent<katanaScript>().StartAttack();
@@ -19,7 +17,7 @@ public class weapon : MonoBehaviour
                 //else if (context == "Canceled") gameObject.GetComponent<gunScript>().StopAttack();
                 break;
             default:
-                Debug.Log("Weapon not found");
+                Debug.Log("I don't know what to do with the weapon: " + WeaponData.Name);
                 break;
 
         }
@@ -27,7 +25,7 @@ public class weapon : MonoBehaviour
 
     public void OnADS(string context)
     {
-        switch (WeaponName)
+        switch (WeaponData.Name)
         {
             case "Katana":
                 // Do Nothing
@@ -37,7 +35,7 @@ public class weapon : MonoBehaviour
                 //else if (context == "Canceled") gameObject.GetComponent<gunScript>().StopADS();
                 break;
             default:
-                Debug.Log("Weapon not found");
+                Debug.Log("I don't know what to do with the weapon: " + WeaponData.Name);
                 break;
 
         }
@@ -45,7 +43,7 @@ public class weapon : MonoBehaviour
 
     public void OnReload(string context)
     {
-        switch (WeaponName)
+        switch (WeaponData.Name)
         {
             case "Katana":
                 // Do Nothing
@@ -55,7 +53,7 @@ public class weapon : MonoBehaviour
                 //else if (context == "Canceled") gameObject.GetComponent<gunScript>().StopReload();
                 break;
             default:
-                Debug.Log("Weapon not found");
+                Debug.Log("I don't know what to do with the weapon: " + WeaponData.Name);
                 break;
 
         }

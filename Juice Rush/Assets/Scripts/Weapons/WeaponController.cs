@@ -1,19 +1,19 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class weaponController : MonoBehaviour
+public class WeaponController : MonoBehaviour
 {
-    [SerializeField] GameObject weaponContainer;
+    [SerializeField] GameObject WeaponContainer;
     private GameObject[] weaponsArray;
     private int weaponIndex;
 
     void Awake()
     {
         // Get all weapons in the weapon container and add them to the weapons array
-        weaponsArray = new GameObject[weaponContainer.transform.childCount];
-        for (int i = 0; i < weaponContainer.transform.childCount; i++)
+        weaponsArray = new GameObject[WeaponContainer.transform.childCount];
+        for (int i = 0; i < WeaponContainer.transform.childCount; i++)
         {
-            weaponsArray[i] = weaponContainer.transform.GetChild(i).gameObject;
+            weaponsArray[i] = WeaponContainer.transform.GetChild(i).gameObject;
         }
         weaponIndex = 0;
     }
@@ -32,11 +32,11 @@ public class weaponController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started)
         {
-            weaponsArray[weaponIndex].GetComponent<weapon>().OnAttack("Started");
+            weaponsArray[weaponIndex].GetComponent<Weapon>().OnAttack("Started");
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
-            weaponsArray[weaponIndex].GetComponent<weapon>().OnAttack("Canceled");
+            weaponsArray[weaponIndex].GetComponent<Weapon>().OnAttack("Canceled");
         }
     }
 
@@ -44,11 +44,11 @@ public class weaponController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started)
         {
-            weaponsArray[weaponIndex].GetComponent<weapon>().OnADS("Started");
+            weaponsArray[weaponIndex].GetComponent<Weapon>().OnADS("Started");
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
-            weaponsArray[weaponIndex].GetComponent<weapon>().OnADS("Canceled");
+            weaponsArray[weaponIndex].GetComponent<Weapon>().OnADS("Canceled");
         }
     }
 
@@ -56,11 +56,11 @@ public class weaponController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started)
         {
-            weaponsArray[weaponIndex].GetComponent<weapon>().OnReload("Started");
+            weaponsArray[weaponIndex].GetComponent<Weapon>().OnReload("Started");
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
-            weaponsArray[weaponIndex].GetComponent<weapon>().OnReload("Canceled");
+            weaponsArray[weaponIndex].GetComponent<Weapon>().OnReload("Canceled");
         }
     }
 
@@ -98,8 +98,9 @@ public class weaponController : MonoBehaviour
             // Find the primary weapon in the weapons array
             for (int i = 0; i < weaponsArray.Length; i++)
             {
-                if (weaponsArray[i].GetComponent<weapon>().WeaponType == weapon.WeaponTypes.Primary)
+                if (weaponsArray[i].GetComponent<Weapon>().WeaponData.Type == WeaponData.WeaponTypes.Primary)
                 {
+                    if (weaponIndex == i) return;
                     // Hide the current weapon
                     weaponsArray[weaponIndex].SetActive(false);
                     // Set the new weapon index
@@ -119,8 +120,9 @@ public class weaponController : MonoBehaviour
             // Find the secondary weapon in the weapons array
             for (int i = 0; i < weaponsArray.Length; i++)
             {
-                if (weaponsArray[i].GetComponent<weapon>().WeaponType == weapon.WeaponTypes.Secondary)
+                if (weaponsArray[i].GetComponent<Weapon>().WeaponData.Type == WeaponData.WeaponTypes.Secondary)
                 {
+                    if (weaponIndex == i) return;
                     // Hide the current weapon
                     weaponsArray[weaponIndex].SetActive(false);
                     // Set the new weapon index

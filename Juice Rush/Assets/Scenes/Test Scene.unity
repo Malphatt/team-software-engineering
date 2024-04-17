@@ -4590,6 +4590,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!1 &2003955071 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 173322792930436944, guid: 8a01d5bf35e0e6b48a12844e9061dbd6, type: 3}
+  m_PrefabInstance: {fileID: 173322792687662634}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2028788492 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3953062709790823504, guid: f846271ed9b39d5478e471fe3f2a3863, type: 3}
@@ -5055,6 +5060,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 173322791095931206, guid: 8a01d5bf35e0e6b48a12844e9061dbd6, type: 3}
+      propertyPath: WeaponContainer
+      value: 
+      objectReference: {fileID: 2003955071}
     - target: {fileID: 173322791547522882, guid: 8a01d5bf35e0e6b48a12844e9061dbd6, type: 3}
       propertyPath: m_Camera
       value: 
@@ -5115,6 +5124,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 173322791662392603, guid: 8a01d5bf35e0e6b48a12844e9061dbd6, type: 3}
+      propertyPath: WeaponData
+      value: 
+      objectReference: {fileID: 11400000, guid: 936e7b19fe2eeaf4b82e0eadd8ebc510, type: 2}
+    - target: {fileID: 173322791836918206, guid: 8a01d5bf35e0e6b48a12844e9061dbd6, type: 3}
+      propertyPath: WeaponData
+      value: 
+      objectReference: {fileID: 11400000, guid: 03f16340d1a560248b80e6a1b4d644fa, type: 2}
     - target: {fileID: 173322792899155577, guid: 8a01d5bf35e0e6b48a12844e9061dbd6, type: 3}
       propertyPath: m_Name
       value: Player
