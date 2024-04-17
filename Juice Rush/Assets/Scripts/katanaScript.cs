@@ -24,8 +24,6 @@ public class katanaScript : MonoBehaviour
             katana.GetComponent<Animator>().SetBool("swing2", false);
             katana.GetComponent<Animator>().SetFloat("timePassed", 0);
         }
-
-
     }
 
     public void StopAttack()
