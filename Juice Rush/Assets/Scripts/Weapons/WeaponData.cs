@@ -4,10 +4,13 @@ using UnityEngine;
 public class WeaponData : ScriptableObject
 {
     public enum WeaponTypes { Primary, Secondary };
+    public enum Classes { Melee, Ranged };
 
     [Header("Weapon Info")]
     public string Name;
     public WeaponTypes Type;
+    public Classes Class;
+    public float Range; // How far the weapon can shoot or range of melee weapon
 
     [Header("Damage Values")]
     public float Damage;
