@@ -34,7 +34,7 @@ public class katanaScript : MonoBehaviour
             katana.GetComponent<Animator>().SetBool("swing1", true);
             katana.GetComponent<Animator>().SetBool("swing2", false);
             katana.GetComponent<Animator>().SetFloat("timePassed", 0);
-            StartCoroutine(WaitOneTenth1());
+            StartCoroutine(WaitOneTenth(animation1));
             ParticlesHit(timer);
 
             timerOn = false;
@@ -46,7 +46,7 @@ public class katanaScript : MonoBehaviour
             katana.GetComponent<Animator>().SetBool("swing2", true);
             katana.GetComponent<Animator>().SetBool("swing1", false);
             katana.GetComponent<Animator>().SetFloat("timePassed", 0);
-            StartCoroutine(WaitOneTenth2());
+            StartCoroutine(WaitOneTenth(animation2));
             ParticlesHit(timer);
             timerOn = false;
             timer2 = 0;
@@ -119,20 +119,12 @@ public class katanaScript : MonoBehaviour
             // Normal attack
         }
     }
-    IEnumerator WaitOneTenth1()
+    IEnumerator WaitOneTenth(GameObject animation)
     {
         yield return new WaitForSeconds(0.05f);
         if (juiciness == 3)
         {
-            Instantiate(animation1, this.gameObject.transform.position + new Vector3(0, -0.1f, 0), new Quaternion(rot.x, this.rot.y, rot.z, rot.w));
-        }
-    }
-    IEnumerator WaitOneTenth2()
-    {
-        yield return new WaitForSeconds(0.05f);
-        if (juiciness == 3)
-        {
-            Instantiate(animation2, this.gameObject.transform.position + new Vector3(0, -0.1f, 0), new Quaternion(rot.x, this.rot.y, rot.z, rot.w));
+            Instantiate(animation, this.gameObject.transform.position + new Vector3(0, -0.1f, 0), new Quaternion(rot.x, this.rot.y, rot.z, rot.w));
         }
     }
 }

@@ -1,8 +1,12 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class WeaponController : MonoBehaviour
 {
+    [SerializeField] GameObject PlayerCamera;
+    MeleeHitbox MeleeHitbox;
+
     [SerializeField] GameObject WeaponContainer;
     private GameObject[] weaponsArray;
     private int weaponIndex;
@@ -16,16 +20,45 @@ public class WeaponController : MonoBehaviour
             weaponsArray[i] = WeaponContainer.transform.GetChild(i).gameObject;
         }
         weaponIndex = 0;
+
+        MeleeHitbox = this.GetComponent<MeleeHitbox>();
     }
 
-    void Update()
+    void DealDamage()
     {
+        if (weaponsArray[weaponIndex].GetComponent<Weapon>().WeaponData.Class == WeaponData.Classes.Melee)
+        {
+            Colliders enemies = MeleeHitbox.GetColliders(weaponsArray[weaponIndex].GetComponent<Weapon>().WeaponData.Range);
+            GameObject[] headColliders = enemies.HeadColliders;
+            List<GameObject> bodyCollidersList = new List<GameObject>(enemies.BodyColliders);
 
-    }
+            // Filter out the enemies from the body colliders that are also in the head colliders
+            foreach (GameObject headCollider in headColliders)
+            {
+                bodyCollidersList.Remove(headCollider);
+            }
 
-    void FixedUpdate()
-    {
+            GameObject[] bodyColliders = bodyCollidersList.ToArray();
 
+            foreach (GameObject headCollider in headColliders)
+                Debug.Log("Head collider: " + headCollider.name);
+            //headCollider.GetComponent<Enemy>().TakeDamage(weaponsArray[weaponIndex].GetComponent<Weapon>().WeaponData.Damage * weaponsArray[weaponIndex].GetComponent<Weapon>().WeaponData.HeadshotMultiplier, true);
+
+
+            foreach (GameObject bodyCollider in bodyColliders)
+                Debug.Log("Body collider: " + bodyCollider.name);
+            //bodyCollider.GetComponent<Enemy>().TakeDamage(weaponsArray[weaponIndex].GetComponent<Weapon>().WeaponData.Damage, false);
+
+        }
+        else if (weaponsArray[weaponIndex].GetComponent<Weapon>().WeaponData.Class == WeaponData.Classes.Ranged)
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(PlayerCamera.transform.position, PlayerCamera.transform.forward, out hit, weaponsArray[weaponIndex].GetComponent<Weapon>().WeaponData.Range))
+            {
+                Debug.Log("Raycast hit: " + hit.transform.name);
+
+            }
+        }
     }
 
     public void OnAttack(InputAction.CallbackContext context)
@@ -33,6 +66,7 @@ public class WeaponController : MonoBehaviour
         if (context.phase == InputActionPhase.Started)
         {
             weaponsArray[weaponIndex].GetComponent<Weapon>().OnAttack("Started");
+            DealDamage();
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
