@@ -203,7 +203,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4717090776512049775}
-  - component: {fileID: 4717090776512049768}
+  - component: {fileID: 1495662257429095670}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Enemy
@@ -231,7 +231,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &4717090776512049768
+--- !u!114 &1495662257429095670
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -240,10 +240,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4717090776512049774}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1129d2a429735974f985b8b3073f4768, type: 3}
+  m_Script: {fileID: 11500000, guid: 40ed79a0fbe45de4ebf103587afcd19a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  EnemyData: {fileID: 11400000, guid: e1705cfc2dc894548920fcc1b9f8b87b, type: 2}
 --- !u!1 &4717090777105004847
 GameObject:
   m_ObjectHideFlags: 0
