@@ -16,6 +16,7 @@ MonoBehaviour:
   Type: 0
   Class: 0
   Range: 4
+  Cooldown: 1.2
   Damage: 20
   HeadshotMultiplier: 1
   FireRate: 0

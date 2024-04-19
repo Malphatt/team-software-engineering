@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,6 +12,8 @@ public class WeaponController : MonoBehaviour
     private GameObject[] weaponsArray;
     private int weaponIndex;
 
+    bool canAttack = true;
+
     void Awake()
     {
         // Get all weapons in the weapon container and add them to the weapons array
@@ -21,7 +24,7 @@ public class WeaponController : MonoBehaviour
         }
         weaponIndex = 0;
 
-        MeleeHitbox = this.GetComponent<MeleeHitbox>();
+        MeleeHitbox = GetComponent<MeleeHitbox>();
     }
 
     void DealDamage()
@@ -40,14 +43,18 @@ public class WeaponController : MonoBehaviour
 
             GameObject[] bodyColliders = bodyCollidersList.ToArray();
 
-            foreach (GameObject headCollider in headColliders)
-                Debug.Log("Head collider: " + headCollider.name);
-            //headCollider.GetComponent<Enemy>().TakeDamage(weaponsArray[weaponIndex].GetComponent<Weapon>().WeaponData.Damage * weaponsArray[weaponIndex].GetComponent<Weapon>().WeaponData.HeadshotMultiplier, true);
+            try
+            {
+                foreach (GameObject headCollider in headColliders)
+                    headCollider.GetComponent<Enemy>().TakeDamage(weaponsArray[weaponIndex].GetComponent<Weapon>().WeaponData.Damage * weaponsArray[weaponIndex].GetComponent<Weapon>().WeaponData.HeadshotMultiplier);
 
-
-            foreach (GameObject bodyCollider in bodyColliders)
-                Debug.Log("Body collider: " + bodyCollider.name);
-            //bodyCollider.GetComponent<Enemy>().TakeDamage(weaponsArray[weaponIndex].GetComponent<Weapon>().WeaponData.Damage, false);
+                foreach (GameObject bodyCollider in bodyColliders)
+                    bodyCollider.GetComponent<Enemy>().TakeDamage(weaponsArray[weaponIndex].GetComponent<Weapon>().WeaponData.Damage);
+            }
+            catch (System.NullReferenceException)
+            {
+                Debug.Log("No enemies in range.");
+            }
 
         }
         else if (weaponsArray[weaponIndex].GetComponent<Weapon>().WeaponData.Class == WeaponData.Classes.Ranged)
@@ -63,10 +70,11 @@ public class WeaponController : MonoBehaviour
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started)
+        if (context.phase == InputActionPhase.Started && canAttack)
         {
             weaponsArray[weaponIndex].GetComponent<Weapon>().OnAttack("Started");
             DealDamage();
+            StartCoroutine(AttackCooldown());
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
@@ -167,5 +175,12 @@ public class WeaponController : MonoBehaviour
                 }
             }
         }
+    }
+
+    IEnumerator AttackCooldown()
+    {
+        canAttack = false;
+        yield return new WaitForSeconds(weaponsArray[weaponIndex].GetComponent<Weapon>().WeaponData.AttackCooldown);
+        canAttack = true;
     }
 }

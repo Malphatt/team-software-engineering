@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -8,16 +10,16 @@ public class Weapon : MonoBehaviour
     {
         switch (WeaponData.Name)
         {
-            case "Katana":
-                if (context == "Started") gameObject.GetComponent<katanaScript>().StartAttack();
-                else if (context == "Canceled") gameObject.GetComponent<katanaScript>().StopAttack();
+            case WeaponData.WeaponNames.Katana:
+                if (context == "Started") GetComponent<katanaScript>().StartAttack();
+                else if (context == "Canceled") GetComponent<katanaScript>().StopAttack();
                 break;
-            case "Gun":
-                //if (context == "Started") gameObject.GetComponent<gunScript>().StartAttack();
-                //else if (context == "Canceled") gameObject.GetComponent<gunScript>().StopAttack();
+            case WeaponData.WeaponNames.Pistol:
+                //if (context == "Started" && canAttack) GetComponent<gunScript>().StartAttack();
+                //else if (context == "Canceled") GetComponent<gunScript>().StopAttack();
                 break;
             default:
-                Debug.Log("I don't know what to do with the weapon: " + WeaponData.Name);
+                Debug.Log("I don't know what to do with the weapon: " + WeaponData.Name.ToString());
                 break;
 
         }
@@ -27,15 +29,15 @@ public class Weapon : MonoBehaviour
     {
         switch (WeaponData.Name)
         {
-            case "Katana":
+            case WeaponData.WeaponNames.Katana:
                 // Do Nothing
                 break;
-            case "Gun":
-                //if (context == "Started") gameObject.GetComponent<gunScript>().StartADS();
-                //else if (context == "Canceled") gameObject.GetComponent<gunScript>().StopADS();
+            case WeaponData.WeaponNames.Pistol:
+                //if (context == "Started") GetComponent<gunScript>().StartADS();
+                //else if (context == "Canceled") GetComponent<gunScript>().StopADS();
                 break;
             default:
-                Debug.Log("I don't know what to do with the weapon: " + WeaponData.Name);
+                Debug.Log("I don't know what to do with the weapon: " + WeaponData.Name.ToString());
                 break;
 
         }
@@ -45,15 +47,15 @@ public class Weapon : MonoBehaviour
     {
         switch (WeaponData.Name)
         {
-            case "Katana":
+            case WeaponData.WeaponNames.Katana:
                 // Do Nothing
                 break;
-            case "Gun":
-                //if (context == "Started") gameObject.GetComponent<gunScript>().StartReload();
-                //else if (context == "Canceled") gameObject.GetComponent<gunScript>().StopReload();
+            case WeaponData.WeaponNames.Pistol:
+                //if (context == "Started") GetComponent<gunScript>().StartReload();
+                //else if (context == "Canceled") GetComponent<gunScript>().StopReload();
                 break;
             default:
-                Debug.Log("I don't know what to do with the weapon: " + WeaponData.Name);
+                Debug.Log("I don't know what to do with the weapon: " + WeaponData.Name.ToString());
                 break;
 
         }

@@ -30,19 +30,19 @@ public class Hitbox : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag.Equals("Enemy"))
-        {
+        // Check if the object collided with is an enemy and doesn't already exist in the list of colliders
+        if (other.gameObject.tag.Equals("Enemy") && !Colliders.Contains(other.gameObject))
             Colliders.Add(other.gameObject);
-            Debug.Log("Collided with: " + other.gameObject.name);
-        }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag.Equals("Enemy"))
-        {
-            Colliders.Remove(other.gameObject);
-            Debug.Log("Exited collision with: " + other.gameObject.name);
-        }
+        RemoveCollider(other.gameObject);
+    }
+
+    public void RemoveCollider(GameObject collider)
+    {
+        if (Colliders.Contains(collider))
+            Colliders.Remove(collider);
     }
 }

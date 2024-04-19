@@ -96,7 +96,6 @@ MonoBehaviour:
   distanceToPlayer: 0
   shotgunScript: {fileID: 0}
   shotgunObj: {fileID: 1980713049238132742}
-  rb: {fileID: 0}
 --- !u!1 &1980713048978975074
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,7 +112,7 @@ GameObject:
   - component: {fileID: 1980713048978975083}
   m_Layer: 0
   m_Name: ShotgunEnemy
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

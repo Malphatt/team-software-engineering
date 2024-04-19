@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TurretController : MonoBehaviour
@@ -13,7 +12,8 @@ public class TurretController : MonoBehaviour
     [SerializeField] float maxDistance;
     [SerializeField] float horizontalFOV;
     [SerializeField] float verticalFOV;
-    [SerializeField] Transform player;
+    [SerializeField] Enemy Turret;
+    Transform player;
 
     //Attack variables
     [SerializeField] GameObject projectilePrefab;
@@ -21,7 +21,7 @@ public class TurretController : MonoBehaviour
     [SerializeField] float fireRate;
     float fireTime;
     [SerializeField] float aimSpeed;
-    [SerializeField] float accuracy; 
+    [SerializeField] float accuracy;
     [SerializeField] float shotForce;
 
 
@@ -30,6 +30,7 @@ public class TurretController : MonoBehaviour
     void Start()
     {
         rotateCoroutine = StartCoroutine(RotateTurretHead());
+        player = Turret.Player.transform;
     }
 
     // Update is called once per frame
