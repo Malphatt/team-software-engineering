@@ -23,6 +23,11 @@ public class LavaParticleSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        spawnRate = JuiceSlider.Instance.juiciness;
+        minParticleAmount = (int)(spawnRate * 2.5f);
+        maxParticleAmount = (int)(spawnRate * 5f);
+        minForceMagnitude = (int)(spawnRate * 2.5f);
+        maxForceMagnitude = (int)(spawnRate * 8f);
         if (Time.time > spawnTime)
         {
             LavaParticleSpawn();

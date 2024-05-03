@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 3470769520347209868}
   - component: {fileID: 1715397794264290374}
   - component: {fileID: 4438269752935467}
-  - component: {fileID: 4438269752935466}
   - component: {fileID: 4438269752935471}
   - component: {fileID: 4438269752935472}
   - component: {fileID: 4438269752935473}
+  - component: {fileID: 8910932019897288817}
   m_Layer: 0
   m_Name: Puddle
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 922865484334052755}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -3.11, y: 0.0000014305115, z: 14.19}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9779534, y: 0.8010597, z: 1.1219189}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -104,20 +104,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &4438269752935466
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 922865484334052755}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 1.5102103
-  m_Height: 0.11442308
-  m_Direction: 1
-  m_Center: {x: -0.028569937, y: -0.61, z: 0.17141932}
 --- !u!198 &4438269752935471
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -201,7 +187,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 2.67
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -253,8 +239,8 @@ ParticleSystem:
         m_RotationOrder: 4
     startSpeed:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 5
+      minMaxState: 3
+      scalar: 7.72
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -370,7 +356,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.14
+      scalar: 0.44
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -693,7 +679,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1.24
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -4967,3 +4953,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c57f3563f0bc83b44a6defb22d4574f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particleCount: 8
+  _particleSystem: {fileID: 4438269752935471}
+--- !u!64 &8910932019897288817
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922865484334052755}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2534964839176971238, guid: fc3f806fd1e4ba24daf315576724741a, type: 3}

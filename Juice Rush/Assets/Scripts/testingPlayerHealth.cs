@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class testingPlayerHealth : MonoBehaviour
 {
-    [SerializeField] float health = 100f;
+    [SerializeField] public float health = 100f;
     [SerializeField] float healthRegenPts;
     [SerializeField] float healthRegenCooldown;
     float healthRegenTimer;
@@ -13,6 +14,10 @@ public class testingPlayerHealth : MonoBehaviour
     private void Update()
     {
         HealthRegeneration();
+        if(health < 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
     public void TakeDamage(float damagePoints)
     {
@@ -22,7 +27,6 @@ public class testingPlayerHealth : MonoBehaviour
         if (health <= 0f)
         {
             Debug.Log("hit player");
-            Destroy(gameObject);
         }
     }
 

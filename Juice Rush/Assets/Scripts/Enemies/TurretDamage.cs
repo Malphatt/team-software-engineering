@@ -10,7 +10,7 @@ public class TurretDamage : MonoBehaviour
     float lifeTime = 4f;
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.transform.GetComponent<testingPlayerHealth>() != null)
         {
             //Apply damage to player
             tps = other.gameObject.GetComponent<testingPlayerHealth>();

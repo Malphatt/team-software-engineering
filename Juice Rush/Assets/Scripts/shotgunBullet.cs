@@ -10,13 +10,13 @@ public class shotgunBullet : MonoBehaviour
     float lifeTime = 3f;
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.transform.GetComponent<testingPlayerHealth>() != null)
         {
             //Apply damage to a test player
             tps = other.gameObject.GetComponent<testingPlayerHealth>();
             tps.TakeDamage(damage);
             Debug.Log("Destroyed?");
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
         //When merged to main level, make an environment tag for walls, floor, etc
         //else if (other.gameObject.CompareTag("Environment"))

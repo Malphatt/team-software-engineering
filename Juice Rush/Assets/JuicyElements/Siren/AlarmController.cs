@@ -34,7 +34,7 @@ public class AlarmController : MonoBehaviour
         Color oldColor = worldLight.color;
         float oldIntensity = worldLight.intensity;
         worldLight.color = Color.red;
-        worldLight.intensity = intensity;
+        worldLight.intensity = JuiceSlider.Instance.juiciness;
         for (int i = 0; i < 10; i++) 
         {
             yield return new WaitForSeconds(1);

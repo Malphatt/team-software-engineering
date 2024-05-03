@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FlashLightsController : MonoBehaviour
 {
+    public int particleCount = 5;
     bool lightFlashing = false;
     Light thisLight;
     ParticleSystem particles;
@@ -27,7 +28,7 @@ public class FlashLightsController : MonoBehaviour
         lightFlashing = true;
         yield return new WaitForSeconds(Random.Range(0.5f, 1.5f));
         thisLight.intensity = 0;
-        particles.Play();
+        transform.GetComponent<ParticleSystem>().Emit(particleCount * JuiceSlider.Instance.juiciness);
         yield return new WaitForSeconds(Random.Range(0.1f, 0.4f));
         thisLight.intensity = normalIntensity;
         lightFlashing = false;
