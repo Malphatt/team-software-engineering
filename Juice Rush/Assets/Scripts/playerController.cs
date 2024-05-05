@@ -24,7 +24,7 @@ public class playerController : MonoBehaviour
     [SerializeField] private Vector3 velocity;
     
     private CharacterController characterController;
-    private Vector3 inputDirection = Vector3.zero;
+    public Vector3 inputDirection = Vector3.zero;
     private float mouseSensitivity = 0.05f;
     private float rotationX = 0.0f;
     private float rotationY = 0.0f;
@@ -314,7 +314,7 @@ public class playerController : MonoBehaviour
         if (context.phase == InputActionPhase.Started)
         {
             if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit hit)){;
-                debugHitPointTransform.position = hit.point;    
+                //debugHitPointTransform.position = hit.point;    
                 hookshotPosition = hit.point;
                 state = State.Grappling; // Set the state to grappling
             }

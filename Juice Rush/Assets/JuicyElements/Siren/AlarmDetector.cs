@@ -19,7 +19,7 @@ public class AlarmDetector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player")
+        if (other.transform.GetComponent<playerController>() != null)
         {
             alarm.TriggerAlarm();
         }

@@ -6,13 +6,17 @@ using UnityEngine.Rendering;
 public class PuddleScript : MonoBehaviour
 {
     bool hasSplashed = false;
+    public int particleCount = 0;
+    [SerializeField] ParticleSystem _particleSystem;
     void Splash()
     {
         if (!hasSplashed)
         {
             print("splash");
             StartCoroutine(SplashRoutine());
-            transform.GetComponent<ParticleSystem>().Play();
+            var main = _particleSystem.main;
+            main.startSpeed = new ParticleSystem.MinMaxCurve(JuiceSlider.Instance.juiciness * 0.5f, JuiceSlider.Instance.juiciness);
+            transform.GetComponent<ParticleSystem>().Emit(particleCount * JuiceSlider.Instance.juiciness);
         }
     }
 
@@ -26,10 +30,23 @@ public class PuddleScript : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.transform.GetComponent<playerController>() != null)
+        {
+            if (other.transform.GetComponent<playerController>().inputDirection != Vector3.zero)
+            {
+                ParticleSystem.ShapeModule _editableShape = transform.GetComponent<ParticleSystem>().shape;
+                _editableShape.position = other.transform.position - transform.position;
+                Splash();
+            }
+        }
+    }
+
     IEnumerator SplashRoutine()
     {
         hasSplashed = true;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.3f);
         hasSplashed = false;
     }
 }
