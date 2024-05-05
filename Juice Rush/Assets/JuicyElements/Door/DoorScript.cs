@@ -7,7 +7,7 @@ public class DoorScript : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        print("hi");
+        // print("hi");
         if (other.transform.GetComponent<playerController>() != null)
         {
             transform.GetComponent<Animator>().SetBool("Open", true);
