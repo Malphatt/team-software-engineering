@@ -14,6 +14,8 @@ public class WeaponController : MonoBehaviour
 
     bool canAttack = true;
 
+    Transform targetLocation;
+
     void Awake()
     {
         // Get all weapons in the weapon container and add them to the weapons array
@@ -25,6 +27,7 @@ public class WeaponController : MonoBehaviour
         weaponIndex = 0;
 
         MeleeHitbox = GetComponent<MeleeHitbox>();
+        targetLocation = null;
     }
 
     void DealDamage()
@@ -59,21 +62,39 @@ public class WeaponController : MonoBehaviour
         }
         else if (weaponsArray[weaponIndex].GetComponent<Weapon>().WeaponData.Class == WeaponData.Classes.Ranged)
         {
-            RaycastHit hit;
-            if (Physics.Raycast(PlayerCamera.transform.position, PlayerCamera.transform.forward, out hit, weaponsArray[weaponIndex].GetComponent<Weapon>().WeaponData.Range))
+            RaycastHit[] hits;
+            hits = Physics.RaycastAll(PlayerCamera.transform.position, PlayerCamera.transform.forward, weaponsArray[weaponIndex].GetComponent<Weapon>().WeaponData.Range);
+            
+            if (hits.Length > 0)
             {
-                Debug.Log("Raycast hit: " + hit.transform.name);
-
+                for (int i = 0; i < hits.Length; i++)
+                {
+                    if (hits[i].collider.gameObject.CompareTag("Enemy"))
+                    {
+                        targetLocation = new GameObject().transform;
+                        targetLocation.position = hits[i].point;
+                        hits[i].collider.gameObject.GetComponent<Enemy>().TakeDamage(weaponsArray[weaponIndex].GetComponent<Weapon>().WeaponData.Damage);
+                        break;
+                    }
+                }
             }
+
+            // Clear the hits array
+            hits = null;
         }
+    }
+
+    void Update()
+    {
+        Debug.DrawRay(PlayerCamera.transform.position, PlayerCamera.transform.forward * weaponsArray[weaponIndex].GetComponent<Weapon>().WeaponData.Range, Color.yellow);
     }
 
     public void OnAttack(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started && canAttack)
         {
-            weaponsArray[weaponIndex].GetComponent<Weapon>().OnAttack("Started");
             DealDamage();
+            weaponsArray[weaponIndex].GetComponent<Weapon>().OnAttack("Started", targetLocation);
             StartCoroutine(AttackCooldown());
         }
         else if (context.phase == InputActionPhase.Canceled)

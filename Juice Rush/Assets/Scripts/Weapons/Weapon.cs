@@ -6,7 +6,7 @@ public class Weapon : MonoBehaviour
 {
     public WeaponData WeaponData;
 
-    public void OnAttack(string context)
+    public void OnAttack(string context, Transform targetLocation = null)
     {
         switch (WeaponData.Name)
         {
@@ -15,8 +15,8 @@ public class Weapon : MonoBehaviour
                 else if (context == "Canceled") GetComponent<katanaScript>().StopAttack();
                 break;
             case WeaponData.WeaponNames.Pistol:
-                //if (context == "Started" && canAttack) GetComponent<gunScript>().StartAttack();
-                //else if (context == "Canceled") GetComponent<gunScript>().StopAttack();
+                if (context == "Started") GetComponent<gunScript>().StartAttack(targetLocation);
+                else if (context == "Canceled") GetComponent<gunScript>().StopAttack();
                 break;
             default:
                 Debug.Log("I don't know what to do with the weapon: " + WeaponData.Name.ToString());
@@ -33,8 +33,8 @@ public class Weapon : MonoBehaviour
                 // Do Nothing
                 break;
             case WeaponData.WeaponNames.Pistol:
-                //if (context == "Started") GetComponent<gunScript>().StartADS();
-                //else if (context == "Canceled") GetComponent<gunScript>().StopADS();
+                if (context == "Started") GetComponent<gunScript>().StartADS();
+                else if (context == "Canceled") GetComponent<gunScript>().StopADS();
                 break;
             default:
                 Debug.Log("I don't know what to do with the weapon: " + WeaponData.Name.ToString());
@@ -51,8 +51,8 @@ public class Weapon : MonoBehaviour
                 // Do Nothing
                 break;
             case WeaponData.WeaponNames.Pistol:
-                //if (context == "Started") GetComponent<gunScript>().StartReload();
-                //else if (context == "Canceled") GetComponent<gunScript>().StopReload();
+                if (context == "Started") GetComponent<gunScript>().StartReload();
+                else if (context == "Canceled") GetComponent<gunScript>().StopReload();
                 break;
             default:
                 Debug.Log("I don't know what to do with the weapon: " + WeaponData.Name.ToString());

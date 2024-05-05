@@ -20,12 +20,6 @@ public class WeaponData : ScriptableObject
 
 
     [Header("Gun Values")]
-    public float FireRate;
     public float ReloadTime;
     public int MagazineSize;
-    public int MaxAmmo;
-    public float Recoil;
-    public float AdsSpeed;
-    public float AdsFOV;
-    public float AdsRecoil;
 }

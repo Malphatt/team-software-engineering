@@ -16,14 +16,8 @@ MonoBehaviour:
   Type: 0
   Class: 0
   Range: 4
-  AttackCooldown: 2
+  AttackCooldown: 0.5
   Damage: 20
   HeadshotMultiplier: 1
-  FireRate: 0
   ReloadTime: 0
   MagazineSize: 0
-  MaxAmmo: 0
-  Recoil: 0
-  AdsSpeed: 0
-  AdsFOV: 0
-  AdsRecoil: 0
