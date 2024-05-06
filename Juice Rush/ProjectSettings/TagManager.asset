@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - KatanaCover
+  - Wall
   layers:
   - Default
   - TransparentFX

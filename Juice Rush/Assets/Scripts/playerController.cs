@@ -13,13 +13,16 @@ public class playerController : MonoBehaviour
     private float runningspeed = 20.0f;
     private float sneakingSpeed = 2.5f;
     private float groundAcceleration = 2.5f;
-    private float airAcceleration = 0.5f;
+    private float airAcceleration = 1.5f;
     private float jumpHeight = 2.0f;
     private float doubleJumpHeight = 1.5f;
 
     private float gravity = -9.81f;
+    private float mass = 2.5f;
     private float friction = 0.8f;
-    private float slideFriction = 0.9875f;
+    private bool isSlidingGracePeriod = false;
+    private float slideGracePeriod = 0.8f;
+    private float slideFriction = 0.95f;
     private float speed;
     [SerializeField] private Vector3 velocity;
     
@@ -36,7 +39,7 @@ public class playerController : MonoBehaviour
     private bool isSliding = false;
     private bool isJumping = false;
     private int jumpCount = 0;
-    private int maxJumpCount = 2;
+    private int maxJumpCount = 1;
 
     private float originalHeight;
     private Vector3 originalCenter;
@@ -96,9 +99,12 @@ public class playerController : MonoBehaviour
             // If the player is not moving and is grounded, apply friction to slow them down
             if (isGrounded && isSliding)
             {
-                // If the player is sneak sliding and has a higher velocity than walking speed, apply a smaller friction
-                velocity.x = velocity.x * slideFriction;
-                velocity.z = velocity.z * slideFriction;
+                if (!isSlidingGracePeriod)
+                {
+                    // If the player is sneak sliding and has a higher velocity than walking speed, apply a smaller friction
+                    velocity.x = velocity.x * slideFriction;
+                    velocity.z = velocity.z * slideFriction;
+                }
             }
             else if (isGrounded)
             {
@@ -199,7 +205,7 @@ public class playerController : MonoBehaviour
             Jump();
         }
 
-        velocity.y += gravity * Time.deltaTime;
+        velocity.y += gravity * mass * Time.deltaTime;
 
         // Apply momentum from the grapple
         velocity += grappleVelocityMomentum;
@@ -248,12 +254,12 @@ public class playerController : MonoBehaviour
         { 
             if (isGrounded)
             {
-                velocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravity);
+                velocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravity * mass);
                 jumpCount++;
             }
             else if (jumpCount < maxJumpCount && pressedJump)
             {
-                velocity.y += Mathf.Sqrt(doubleJumpHeight * -3.0f * gravity);
+                velocity.y += Mathf.Sqrt(doubleJumpHeight * -3.0f * gravity * mass);
                 jumpCount++;
             }
         }        
@@ -337,11 +343,19 @@ public class playerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started)
         {
+            StartCoroutine(SlideGracePeriod());
             isSneakSliding = true;
         }
         else if (context.phase == InputActionPhase.Canceled)
         {
             isSneakSliding = false;
         }
+    }
+
+    private IEnumerator SlideGracePeriod()
+    {
+        isSlidingGracePeriod = true;
+        yield return new WaitForSeconds(slideGracePeriod);
+        isSlidingGracePeriod = false;
     }
 }
