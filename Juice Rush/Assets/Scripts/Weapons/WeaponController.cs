@@ -64,17 +64,37 @@ public class WeaponController : MonoBehaviour
         {
             RaycastHit[] hits;
             hits = Physics.RaycastAll(PlayerCamera.transform.position, PlayerCamera.transform.forward, weaponsArray[weaponIndex].GetComponent<Weapon>().WeaponData.Range);
-            
+
             if (hits.Length > 0)
             {
+                // Reverse the hits array so that the closest hit is the first element
+                System.Array.Reverse(hits);
+
+                int enemiesHit = 0;
                 for (int i = 0; i < hits.Length; i++)
                 {
+                    // If the hit object is a wall then break the loop (no damage dealt through walls)
+                    if (hits[i].collider.gameObject.CompareTag("Wall"))
+                        break;
+
+                    // If the hit object is an enemy, deal damage to it
                     if (hits[i].collider.gameObject.CompareTag("Enemy"))
                     {
+                        // If the enemy is behind another enemy, reduce the damage dealt
+                        float wallbangMultiplier = 1 / (enemiesHit + 1);
+
+                        // If the hit distance is greater than the drop off range, reduce the damage dealt
+                        float dropOffMultiplier = 1;
+                        if (hits[i].distance > weaponsArray[weaponIndex].GetComponent<Weapon>().WeaponData.DropOffRange && weaponsArray[weaponIndex].GetComponent<Weapon>().WeaponData.DropOffRange != 0)
+                            dropOffMultiplier = weaponsArray[weaponIndex].GetComponent<Weapon>().WeaponData.DropOffMultiplier;
+
+                        // Set the target location to the hit point
                         targetLocation = new GameObject().transform;
                         targetLocation.position = hits[i].point;
-                        hits[i].collider.gameObject.GetComponent<Enemy>().TakeDamage(weaponsArray[weaponIndex].GetComponent<Weapon>().WeaponData.Damage);
-                        break;
+
+                        // Deal damage to the enemy
+                        hits[i].collider.gameObject.GetComponent<Enemy>().TakeDamage(weaponsArray[weaponIndex].GetComponent<Weapon>().WeaponData.Damage * wallbangMultiplier * dropOffMultiplier);
+                        enemiesHit++;
                     }
                 }
             }
@@ -86,6 +106,7 @@ public class WeaponController : MonoBehaviour
 
     void Update()
     {
+        // Debug
         Debug.DrawRay(PlayerCamera.transform.position, PlayerCamera.transform.forward * weaponsArray[weaponIndex].GetComponent<Weapon>().WeaponData.Range, Color.yellow);
     }
 

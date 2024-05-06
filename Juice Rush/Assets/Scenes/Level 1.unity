@@ -339,7 +339,7 @@ GameObject:
   - component: {fileID: 45543563}
   m_Layer: 0
   m_Name: Cube (4)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1309,6 +1309,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightsWhite (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1488590992707304560, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759183760659384132, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 2297778307826607818, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1352,6 +1360,10 @@ PrefabInstance:
     - target: {fileID: 2297778307826607818, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771733184586340935, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
@@ -1650,6 +1662,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightsFlashingBoth (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6319963149551081402, guid: e218eae4aab91e14da005bf57564ad74, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 6590012200396139648, guid: e218eae4aab91e14da005bf57564ad74, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.0000017362386
@@ -1665,6 +1681,10 @@ PrefabInstance:
     - target: {fileID: 6590012200396139648, guid: e218eae4aab91e14da005bf57564ad74, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.39934093
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590012200396139662, guid: e218eae4aab91e14da005bf57564ad74, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 6590012200396139663, guid: e218eae4aab91e14da005bf57564ad74, type: 3}
       propertyPath: m_Color.b
@@ -1730,6 +1750,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180
       objectReference: {fileID: 0}
+    - target: {fileID: 7673800131424175122, guid: e218eae4aab91e14da005bf57564ad74, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e218eae4aab91e14da005bf57564ad74, type: 3}
 --- !u!4 &298052970 stripped
@@ -1751,7 +1775,7 @@ GameObject:
   - component: {fileID: 308752479}
   m_Layer: 0
   m_Name: Cube (5)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2067,7 +2091,7 @@ GameObject:
   - component: {fileID: 351425564}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2493,7 +2517,7 @@ GameObject:
   - component: {fileID: 420242948}
   m_Layer: 0
   m_Name: Cube (3)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4378,6 +4402,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightsWhite
       objectReference: {fileID: 0}
+    - target: {fileID: 1488590992707304560, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759183760659384132, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 2297778307826607818, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -4434,6 +4466,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180
       objectReference: {fileID: 0}
+    - target: {fileID: 8771733184586340935, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
 --- !u!1001 &693248768
@@ -4446,6 +4482,14 @@ PrefabInstance:
     - target: {fileID: 1542984195533087946, guid: 7c6584495b1d36d43bcfdbc75f72982c, type: 3}
       propertyPath: m_Name
       value: Lights Red (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542984195533087946, guid: 7c6584495b1d36d43bcfdbc75f72982c, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848919111583506430, guid: 7c6584495b1d36d43bcfdbc75f72982c, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 2171323671404805744, guid: 7c6584495b1d36d43bcfdbc75f72982c, type: 3}
       propertyPath: m_RootOrder
@@ -4502,6 +4546,10 @@ PrefabInstance:
     - target: {fileID: 2171323671404805744, guid: 7c6584495b1d36d43bcfdbc75f72982c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681315788543935229, guid: 7c6584495b1d36d43bcfdbc75f72982c, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c6584495b1d36d43bcfdbc75f72982c, type: 3}
@@ -4890,7 +4938,7 @@ PrefabInstance:
     - target: {fileID: 3951690995245229302, guid: 70d91aea611bc3940a6a77da56bddcd2, type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5194965602727076343}
     - target: {fileID: 4822312954567425009, guid: 70d91aea611bc3940a6a77da56bddcd2, type: 3}
       propertyPath: player
       value: 
@@ -4969,7 +5017,7 @@ PrefabInstance:
     - target: {fileID: 3951690995245229302, guid: 70d91aea611bc3940a6a77da56bddcd2, type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5194965602727076343}
     - target: {fileID: 4822312954567425009, guid: 70d91aea611bc3940a6a77da56bddcd2, type: 3}
       propertyPath: player
       value: 
@@ -5239,7 +5287,7 @@ GameObject:
   - component: {fileID: 783243522}
   m_Layer: 0
   m_Name: Lights
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5306,6 +5354,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightsWhite (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1488590992707304560, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759183760659384132, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 2297778307826607818, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -5361,6 +5417,10 @@ PrefabInstance:
     - target: {fileID: 2297778307826607818, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771733184586340935, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
@@ -6657,7 +6717,7 @@ GameObject:
   - component: {fileID: 923141353}
   m_Layer: 0
   m_Name: Doors
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6951,9 +7011,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180
       objectReference: {fileID: 0}
+    - target: {fileID: 3757358627136599099, guid: 0fed503ee5a58d34c8d158f5339287d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4099885423989280527, guid: 0fed503ee5a58d34c8d158f5339287d7, type: 3}
       propertyPath: m_Name
       value: Lights (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4099885423989280527, guid: 0fed503ee5a58d34c8d158f5339287d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194214579728460088, guid: 0fed503ee5a58d34c8d158f5339287d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fed503ee5a58d34c8d158f5339287d7, type: 3}
@@ -7006,6 +7078,14 @@ PrefabInstance:
     - target: {fileID: 1488590992707304560, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
       propertyPath: m_Name
       value: LightsWhite (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1488590992707304560, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759183760659384132, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 2297778307826607818, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
       propertyPath: m_RootOrder
@@ -7062,6 +7142,10 @@ PrefabInstance:
     - target: {fileID: 2297778307826607818, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771733184586340935, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
@@ -7516,6 +7600,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightsFlashingBoth
       objectReference: {fileID: 0}
+    - target: {fileID: 6319963149551081402, guid: e218eae4aab91e14da005bf57564ad74, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590012200396139662, guid: e218eae4aab91e14da005bf57564ad74, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 6701026750135880960, guid: e218eae4aab91e14da005bf57564ad74, type: 3}
       propertyPath: m_RootOrder
       value: 21
@@ -7571,6 +7663,10 @@ PrefabInstance:
     - target: {fileID: 6701026750135880960, guid: e218eae4aab91e14da005bf57564ad74, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 7673800131424175122, guid: e218eae4aab91e14da005bf57564ad74, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e218eae4aab91e14da005bf57564ad74, type: 3}
@@ -8267,7 +8363,7 @@ PrefabInstance:
     - target: {fileID: 3951690995245229302, guid: 70d91aea611bc3940a6a77da56bddcd2, type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5194965602727076343}
     - target: {fileID: 4822312954567425009, guid: 70d91aea611bc3940a6a77da56bddcd2, type: 3}
       propertyPath: player
       value: 
@@ -8381,7 +8477,7 @@ PrefabInstance:
     - target: {fileID: 3951690995245229302, guid: 70d91aea611bc3940a6a77da56bddcd2, type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5194965602727076343}
     - target: {fileID: 4822312954567425009, guid: 70d91aea611bc3940a6a77da56bddcd2, type: 3}
       propertyPath: player
       value: 
@@ -8844,7 +8940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6dcd75fb337ba4fbe5d72e47f25799, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 0}
+  health: {fileID: 1117509807}
 --- !u!114 &1174025042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10060,6 +10156,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lights (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1542984195533087946, guid: 7c6584495b1d36d43bcfdbc75f72982c, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848919111583506430, guid: 7c6584495b1d36d43bcfdbc75f72982c, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 2171323671404805744, guid: 7c6584495b1d36d43bcfdbc75f72982c, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -10115,6 +10219,10 @@ PrefabInstance:
     - target: {fileID: 2171323671404805744, guid: 7c6584495b1d36d43bcfdbc75f72982c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681315788543935229, guid: 7c6584495b1d36d43bcfdbc75f72982c, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c6584495b1d36d43bcfdbc75f72982c, type: 3}
@@ -10260,6 +10368,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 783243522}
     m_Modifications:
+    - target: {fileID: 2878969976261952803, guid: 0da6e21780a10924cbe1dfb5b55e1d4b, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4732168413420976558, guid: 0da6e21780a10924cbe1dfb5b55e1d4b, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -10316,9 +10428,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -270
       objectReference: {fileID: 0}
+    - target: {fileID: 5054924877025286176, guid: 0da6e21780a10924cbe1dfb5b55e1d4b, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 5397523149517988628, guid: 0da6e21780a10924cbe1dfb5b55e1d4b, type: 3}
       propertyPath: m_Name
       value: LightsGreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 5397523149517988628, guid: 0da6e21780a10924cbe1dfb5b55e1d4b, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0da6e21780a10924cbe1dfb5b55e1d4b, type: 3}
@@ -11363,6 +11483,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightsWhite
       objectReference: {fileID: 0}
+    - target: {fileID: 1488590992707304560, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759183760659384132, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 2297778307826607818, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -11418,6 +11546,10 @@ PrefabInstance:
     - target: {fileID: 2297778307826607818, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771733184586340935, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
@@ -12819,7 +12951,7 @@ GameObject:
   - component: {fileID: 1597362782}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12965,9 +13097,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180
       objectReference: {fileID: 0}
+    - target: {fileID: 3757358627136599099, guid: 0fed503ee5a58d34c8d158f5339287d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4099885423989280527, guid: 0fed503ee5a58d34c8d158f5339287d7, type: 3}
       propertyPath: m_Name
       value: Lights (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4099885423989280527, guid: 0fed503ee5a58d34c8d158f5339287d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194214579728460088, guid: 0fed503ee5a58d34c8d158f5339287d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fed503ee5a58d34c8d158f5339287d7, type: 3}
@@ -13849,6 +13993,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightsWhite (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1488590992707304560, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759183760659384132, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 2297778307826607818, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -13905,6 +14057,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180
       objectReference: {fileID: 0}
+    - target: {fileID: 8771733184586340935, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
 --- !u!1001 &1729651735
@@ -13917,6 +14073,14 @@ PrefabInstance:
     - target: {fileID: 1542984195533087946, guid: 7c6584495b1d36d43bcfdbc75f72982c, type: 3}
       propertyPath: m_Name
       value: Lights Red (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542984195533087946, guid: 7c6584495b1d36d43bcfdbc75f72982c, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848919111583506430, guid: 7c6584495b1d36d43bcfdbc75f72982c, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 2171323671404805744, guid: 7c6584495b1d36d43bcfdbc75f72982c, type: 3}
       propertyPath: m_RootOrder
@@ -13973,6 +14137,10 @@ PrefabInstance:
     - target: {fileID: 2171323671404805744, guid: 7c6584495b1d36d43bcfdbc75f72982c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681315788543935229, guid: 7c6584495b1d36d43bcfdbc75f72982c, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c6584495b1d36d43bcfdbc75f72982c, type: 3}
@@ -14088,7 +14256,7 @@ GameObject:
   - component: {fileID: 1758084622}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14943,9 +15111,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180
       objectReference: {fileID: 0}
+    - target: {fileID: 3757358627136599099, guid: 0fed503ee5a58d34c8d158f5339287d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4099885423989280527, guid: 0fed503ee5a58d34c8d158f5339287d7, type: 3}
       propertyPath: m_Name
       value: Lights
+      objectReference: {fileID: 0}
+    - target: {fileID: 4099885423989280527, guid: 0fed503ee5a58d34c8d158f5339287d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194214579728460088, guid: 0fed503ee5a58d34c8d158f5339287d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fed503ee5a58d34c8d158f5339287d7, type: 3}
@@ -15721,6 +15901,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightsWhite (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1488590992707304560, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759183760659384132, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 2297778307826607818, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -15776,6 +15964,10 @@ PrefabInstance:
     - target: {fileID: 2297778307826607818, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771733184586340935, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
@@ -15892,6 +16084,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightsFlashingBoth (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6319963149551081402, guid: e218eae4aab91e14da005bf57564ad74, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590012200396139662, guid: e218eae4aab91e14da005bf57564ad74, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 6701026750135880960, guid: e218eae4aab91e14da005bf57564ad74, type: 3}
       propertyPath: m_RootOrder
       value: 20
@@ -15947,6 +16147,10 @@ PrefabInstance:
     - target: {fileID: 6701026750135880960, guid: e218eae4aab91e14da005bf57564ad74, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 7673800131424175122, guid: e218eae4aab91e14da005bf57564ad74, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e218eae4aab91e14da005bf57564ad74, type: 3}
@@ -17206,7 +17410,7 @@ PrefabInstance:
     - target: {fileID: 3951690995245229302, guid: 70d91aea611bc3940a6a77da56bddcd2, type: 3}
       propertyPath: Player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5194965602727076343}
     - target: {fileID: 4822312954567425009, guid: 70d91aea611bc3940a6a77da56bddcd2, type: 3}
       propertyPath: player
       value: 
@@ -17279,6 +17483,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 783243522}
     m_Modifications:
+    - target: {fileID: 1022689312143113113, guid: b2f2e1653c866ba4da7177e954e81c75, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4750061507951780430, guid: b2f2e1653c866ba4da7177e954e81c75, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
       value: 0.2
@@ -17290,6 +17498,10 @@ PrefabInstance:
     - target: {fileID: 7143465229908483502, guid: b2f2e1653c866ba4da7177e954e81c75, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7143465229908483502, guid: b2f2e1653c866ba4da7177e954e81c75, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 7523684754277582612, guid: b2f2e1653c866ba4da7177e954e81c75, type: 3}
       propertyPath: m_RootOrder
@@ -17346,6 +17558,10 @@ PrefabInstance:
     - target: {fileID: 7523684754277582612, guid: b2f2e1653c866ba4da7177e954e81c75, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8062505559248316058, guid: b2f2e1653c866ba4da7177e954e81c75, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 8062505559248316059, guid: b2f2e1653c866ba4da7177e954e81c75, type: 3}
       propertyPath: m_Color.b
@@ -17594,7 +17810,7 @@ GameObject:
   - component: {fileID: 247287158}
   m_Layer: 0
   m_Name: Door.008
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -18015,7 +18231,7 @@ GameObject:
   - component: {fileID: 1681563290}
   m_Layer: 0
   m_Name: Door.035
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -18057,7 +18273,7 @@ GameObject:
   - component: {fileID: 968551738}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -18076,7 +18292,7 @@ GameObject:
   - component: {fileID: 1320579587}
   m_Layer: 0
   m_Name: Cylinder.018
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -18103,7 +18319,7 @@ GameObject:
   - component: {fileID: 831149081}
   m_Layer: 0
   m_Name: Cylinder.004
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -18137,7 +18353,7 @@ GameObject:
   - component: {fileID: 967977900}
   m_Layer: 0
   m_Name: Door.034
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -18198,7 +18414,7 @@ GameObject:
   - component: {fileID: 921368320}
   m_Layer: 0
   m_Name: Door.053
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -18258,7 +18474,7 @@ GameObject:
   - component: {fileID: 543450652856319496}
   m_Layer: 0
   m_Name: Level1
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18360,7 +18576,7 @@ GameObject:
   - component: {fileID: 2078611422}
   m_Layer: 0
   m_Name: Door.007
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -18444,7 +18660,7 @@ GameObject:
   - component: {fileID: 861573253}
   m_Layer: 0
   m_Name: Door
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -18670,7 +18886,7 @@ GameObject:
   - component: {fileID: 1630258488}
   m_Layer: 0
   m_Name: Door.024
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -18881,7 +19097,7 @@ GameObject:
   - component: {fileID: 1351425615}
   m_Layer: 0
   m_Name: Cylinder.024
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -19090,7 +19306,7 @@ GameObject:
   - component: {fileID: 1259008746}
   m_Layer: 0
   m_Name: Level
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -19212,7 +19428,7 @@ GameObject:
   - component: {fileID: 973137495}
   m_Layer: 0
   m_Name: Cylinder.025
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -19239,7 +19455,7 @@ GameObject:
   - component: {fileID: 1577555244}
   m_Layer: 0
   m_Name: Door.058
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -19409,7 +19625,7 @@ GameObject:
   - component: {fileID: 2006102887}
   m_Layer: 0
   m_Name: Door.037
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -19436,7 +19652,7 @@ GameObject:
   - component: {fileID: 1285542582}
   m_Layer: 0
   m_Name: Brokenfacility.003
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -19455,7 +19671,7 @@ GameObject:
   - component: {fileID: 1800756057}
   m_Layer: 0
   m_Name: Cylinder.002
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -19497,7 +19713,7 @@ GameObject:
   - component: {fileID: 247364995}
   m_Layer: 0
   m_Name: Cylinder.013
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -19531,7 +19747,7 @@ GameObject:
   - component: {fileID: 1397445408}
   m_Layer: 0
   m_Name: Door.003
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -19618,7 +19834,7 @@ GameObject:
   - component: {fileID: 2108089540}
   m_Layer: 0
   m_Name: Cylinder.005
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -19808,7 +20024,7 @@ GameObject:
   - component: {fileID: 790612846}
   m_Layer: 0
   m_Name: Cylinder.015
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -19843,7 +20059,7 @@ GameObject:
   - component: {fileID: 1532265479}
   m_Layer: 0
   m_Name: Cylinder.021
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -20147,7 +20363,7 @@ GameObject:
   - component: {fileID: 135895654}
   m_Layer: 0
   m_Name: Door.020
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -20220,7 +20436,7 @@ GameObject:
   - component: {fileID: 1484365035}
   m_Layer: 0
   m_Name: Door.010
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -20239,7 +20455,7 @@ GameObject:
   - component: {fileID: 281543852}
   m_Layer: 0
   m_Name: Door.052
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -20258,7 +20474,7 @@ GameObject:
   - component: {fileID: 1121382613}
   m_Layer: 0
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -20277,7 +20493,7 @@ GameObject:
   - component: {fileID: 563986352}
   m_Layer: 0
   m_Name: Cylinder.008
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -20461,6 +20677,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightsFlashingBoth
       objectReference: {fileID: 0}
+    - target: {fileID: 6319963149551081402, guid: e218eae4aab91e14da005bf57564ad74, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590012200396139662, guid: e218eae4aab91e14da005bf57564ad74, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 6701026750135880960, guid: e218eae4aab91e14da005bf57564ad74, type: 3}
       propertyPath: m_RootOrder
       value: 18
@@ -20505,6 +20729,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180
       objectReference: {fileID: 0}
+    - target: {fileID: 7673800131424175122, guid: e218eae4aab91e14da005bf57564ad74, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e218eae4aab91e14da005bf57564ad74, type: 3}
 --- !u!1 &3849762623853212107
@@ -20521,7 +20749,7 @@ GameObject:
   - component: {fileID: 2028165933}
   m_Layer: 0
   m_Name: Cylinder.006
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -20540,7 +20768,7 @@ GameObject:
   - component: {fileID: 1684601387}
   m_Layer: 0
   m_Name: Door.046
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -20598,7 +20826,7 @@ GameObject:
   - component: {fileID: 1513690404}
   m_Layer: 0
   m_Name: Door.055
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -20617,7 +20845,7 @@ GameObject:
   - component: {fileID: 776386945}
   m_Layer: 0
   m_Name: Door.028
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -20659,7 +20887,7 @@ GameObject:
   - component: {fileID: 210407653}
   m_Layer: 0
   m_Name: Cylinder.011
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -20678,7 +20906,7 @@ GameObject:
   - component: {fileID: 1388610294}
   m_Layer: 0
   m_Name: Cylinder.014
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -20865,7 +21093,7 @@ GameObject:
   - component: {fileID: 1507267998}
   m_Layer: 0
   m_Name: Door.044
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -20884,7 +21112,7 @@ GameObject:
   - component: {fileID: 947221900}
   m_Layer: 0
   m_Name: Door.054
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -20987,7 +21215,7 @@ GameObject:
   - component: {fileID: 31480796}
   m_Layer: 0
   m_Name: Door.015
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -21048,7 +21276,7 @@ GameObject:
   - component: {fileID: 1515001385}
   m_Layer: 0
   m_Name: Door.030
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -21111,7 +21339,7 @@ GameObject:
   - component: {fileID: 1315156525}
   m_Layer: 0
   m_Name: Cylinder.016
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -21633,7 +21861,7 @@ GameObject:
   - component: {fileID: 1685182508}
   m_Layer: 0
   m_Name: Door.005
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -21795,7 +22023,7 @@ GameObject:
   - component: {fileID: 1341590209}
   m_Layer: 0
   m_Name: Door.019
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -21855,7 +22083,7 @@ GameObject:
   - component: {fileID: 754956328}
   m_Layer: 0
   m_Name: Door.001
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -22589,7 +22817,7 @@ GameObject:
   - component: {fileID: 2049925286}
   m_Layer: 0
   m_Name: Cylinder.010
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -22631,7 +22859,7 @@ GameObject:
   - component: {fileID: 352568010}
   m_Layer: 0
   m_Name: Door.009
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -22650,7 +22878,7 @@ GameObject:
   - component: {fileID: 1540996708}
   m_Layer: 0
   m_Name: Door.033
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -22708,7 +22936,7 @@ GameObject:
   - component: {fileID: 632884823}
   m_Layer: 0
   m_Name: Door.022
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -22727,7 +22955,7 @@ GameObject:
   - component: {fileID: 834511744}
   m_Layer: 0
   m_Name: Cylinder.017
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -23033,7 +23261,7 @@ GameObject:
   - component: {fileID: 2002866753}
   m_Layer: 0
   m_Name: Brokenfacility.002
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -23178,7 +23406,7 @@ GameObject:
   - component: {fileID: 1670616662}
   m_Layer: 0
   m_Name: Cylinder.020
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -23197,7 +23425,7 @@ GameObject:
   - component: {fileID: 333849087}
   m_Layer: 0
   m_Name: Door.040
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -23288,7 +23516,7 @@ GameObject:
   - component: {fileID: 1626846283}
   m_Layer: 0
   m_Name: Door.038
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -23412,6 +23640,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightsWhite
       objectReference: {fileID: 0}
+    - target: {fileID: 1488590992707304560, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759183760659384132, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 2297778307826607818, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -23455,6 +23691,10 @@ PrefabInstance:
     - target: {fileID: 2297778307826607818, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8771733184586340935, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe4a99f441795e94485e4607bd16ffa9, type: 3}
@@ -23556,7 +23796,7 @@ GameObject:
   - component: {fileID: 1991578947}
   m_Layer: 0
   m_Name: Door.016
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -23683,7 +23923,7 @@ GameObject:
   - component: {fileID: 575762100}
   m_Layer: 0
   m_Name: Door.018
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -23786,7 +24026,7 @@ GameObject:
   - component: {fileID: 1929159117}
   m_Layer: 0
   m_Name: Door.041
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -23805,7 +24045,7 @@ GameObject:
   - component: {fileID: 31634164}
   m_Layer: 0
   m_Name: Cylinder.023
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -23882,7 +24122,7 @@ GameObject:
   - component: {fileID: 678265260}
   m_Layer: 0
   m_Name: Door.014
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -23901,7 +24141,7 @@ GameObject:
   - component: {fileID: 1570731161}
   m_Layer: 0
   m_Name: Cylinder.012
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -23928,7 +24168,7 @@ GameObject:
   - component: {fileID: 484261387}
   m_Layer: 0
   m_Name: Door.011
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -24021,7 +24261,7 @@ GameObject:
   - component: {fileID: 925170629}
   m_Layer: 0
   m_Name: Door.021
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -24063,7 +24303,7 @@ GameObject:
   - component: {fileID: 2043162360}
   m_Layer: 0
   m_Name: Cylinder.007
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -24126,7 +24366,7 @@ GameObject:
   - component: {fileID: 135264054}
   m_Layer: 0
   m_Name: Door.027
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -24257,7 +24497,7 @@ GameObject:
   - component: {fileID: 842757082}
   m_Layer: 0
   m_Name: Door.017
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -24272,6 +24512,14 @@ PrefabInstance:
     - target: {fileID: 1542984195533087946, guid: 7c6584495b1d36d43bcfdbc75f72982c, type: 3}
       propertyPath: m_Name
       value: Lights
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542984195533087946, guid: 7c6584495b1d36d43bcfdbc75f72982c, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1848919111583506430, guid: 7c6584495b1d36d43bcfdbc75f72982c, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 2171323671404805744, guid: 7c6584495b1d36d43bcfdbc75f72982c, type: 3}
       propertyPath: m_RootOrder
@@ -24329,6 +24577,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180
       objectReference: {fileID: 0}
+    - target: {fileID: 8681315788543935229, guid: 7c6584495b1d36d43bcfdbc75f72982c, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c6584495b1d36d43bcfdbc75f72982c, type: 3}
 --- !u!4 &6732398566321388418
@@ -24376,6 +24628,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 783243522}
     m_Modifications:
+    - target: {fileID: 2878969976261952803, guid: 0da6e21780a10924cbe1dfb5b55e1d4b, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4732168413420976558, guid: 0da6e21780a10924cbe1dfb5b55e1d4b, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -24420,9 +24676,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -269.999
       objectReference: {fileID: 0}
+    - target: {fileID: 5054924877025286176, guid: 0da6e21780a10924cbe1dfb5b55e1d4b, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 5397523149517988628, guid: 0da6e21780a10924cbe1dfb5b55e1d4b, type: 3}
       propertyPath: m_Name
       value: LightsGreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 5397523149517988628, guid: 0da6e21780a10924cbe1dfb5b55e1d4b, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0da6e21780a10924cbe1dfb5b55e1d4b, type: 3}
@@ -24448,7 +24712,7 @@ GameObject:
   - component: {fileID: 977351742}
   m_Layer: 0
   m_Name: Door.026
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -24615,7 +24879,7 @@ GameObject:
   - component: {fileID: 117458967}
   m_Layer: 0
   m_Name: Cylinder.009
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -24822,7 +25086,7 @@ GameObject:
   - component: {fileID: 2113830401}
   m_Layer: 0
   m_Name: Door.057
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -24841,7 +25105,7 @@ GameObject:
   - component: {fileID: 1363936205}
   m_Layer: 0
   m_Name: Door.039
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -24860,7 +25124,7 @@ GameObject:
   - component: {fileID: 285245284}
   m_Layer: 0
   m_Name: Door.050
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -24879,7 +25143,7 @@ GameObject:
   - component: {fileID: 606918788}
   m_Layer: 0
   m_Name: Door.043
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -24906,7 +25170,7 @@ GameObject:
   - component: {fileID: 376055922}
   m_Layer: 0
   m_Name: Door.023
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -25061,7 +25325,7 @@ GameObject:
   - component: {fileID: 121034654}
   m_Layer: 0
   m_Name: Door.042
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -25353,7 +25617,7 @@ GameObject:
   - component: {fileID: 1978669546}
   m_Layer: 0
   m_Name: Door.045
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -25372,7 +25636,7 @@ GameObject:
   - component: {fileID: 536973637}
   m_Layer: 0
   m_Name: Door.048
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -25391,7 +25655,7 @@ GameObject:
   - component: {fileID: 1431932325}
   m_Layer: 0
   m_Name: Door.036
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -25454,7 +25718,7 @@ GameObject:
   - component: {fileID: 1913294009}
   m_Layer: 0
   m_Name: Door.031
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -25481,7 +25745,7 @@ GameObject:
   - component: {fileID: 1083639990}
   m_Layer: 0
   m_Name: Roof
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -25500,7 +25764,7 @@ GameObject:
   - component: {fileID: 1725691079}
   m_Layer: 0
   m_Name: Cylinder.022
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -25532,7 +25796,7 @@ GameObject:
   - component: {fileID: 1123292209}
   m_Layer: 0
   m_Name: Door.032
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -25647,7 +25911,7 @@ GameObject:
   - component: {fileID: 1988194550}
   m_Layer: 0
   m_Name: Door.047
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -25953,7 +26217,7 @@ GameObject:
   - component: {fileID: 2004012536}
   m_Layer: 0
   m_Name: Cylinder.019
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -26081,7 +26345,7 @@ GameObject:
   - component: {fileID: 278644548}
   m_Layer: 0
   m_Name: Brokenfacility
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -26115,7 +26379,7 @@ GameObject:
   - component: {fileID: 1290897828}
   m_Layer: 0
   m_Name: Door.029
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -26290,7 +26554,7 @@ GameObject:
   - component: {fileID: 2124822149}
   m_Layer: 0
   m_Name: Brokenfacility.001
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -26428,7 +26692,7 @@ GameObject:
   - component: {fileID: 46826390}
   m_Layer: 0
   m_Name: Door.051
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -26571,7 +26835,7 @@ GameObject:
   - component: {fileID: 539192534}
   m_Layer: 0
   m_Name: Cube.002
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -26649,7 +26913,7 @@ GameObject:
   - component: {fileID: 555692557}
   m_Layer: 0
   m_Name: Cylinder.001
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -26668,7 +26932,7 @@ GameObject:
   - component: {fileID: 1882990268}
   m_Layer: 0
   m_Name: Door.049
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -26830,7 +27094,7 @@ GameObject:
   - component: {fileID: 2050823761}
   m_Layer: 0
   m_Name: Door.025
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -26849,7 +27113,7 @@ GameObject:
   - component: {fileID: 1185253458}
   m_Layer: 0
   m_Name: Door.002
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -26927,7 +27191,7 @@ GameObject:
   - component: {fileID: 160260944}
   m_Layer: 0
   m_Name: Cylinder.003
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -26946,7 +27210,7 @@ GameObject:
   - component: {fileID: 1642927206}
   m_Layer: 0
   m_Name: Cube.001
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1
@@ -27032,7 +27296,7 @@ GameObject:
   - component: {fileID: 1877955231}
   m_Layer: 0
   m_Name: Door.006
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -27066,7 +27330,7 @@ GameObject:
   - component: {fileID: 4452159}
   m_Layer: 0
   m_Name: Door.004
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -27174,7 +27438,7 @@ GameObject:
   - component: {fileID: 994294011}
   m_Layer: 0
   m_Name: Door.056
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -27231,7 +27495,7 @@ GameObject:
   - component: {fileID: 1101103822}
   m_Layer: 0
   m_Name: Door.013
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
@@ -27411,7 +27675,7 @@ GameObject:
   - component: {fileID: 534812838}
   m_Layer: 0
   m_Name: Door.012
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 9
