@@ -8867,7 +8867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6dcd75fb337ba4fbe5d72e47f25799, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 1117509807}
+  health: {fileID: 5194965603211544608}
 --- !u!114 &1174025042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11633,6 +11633,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac6eee00cd5bfc7428084672297d7505, type: 3}
+--- !u!4 &1418513939 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4822312955368355627, guid: 70d91aea611bc3940a6a77da56bddcd2, type: 3}
+  m_PrefabInstance: {fileID: 2132812596}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1419335437 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1980713048913167131, guid: 076db8f046723ba468af96bf25b8f83f, type: 3}
@@ -13460,17 +13465,18 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 748896999}
-  - {fileID: 1980713049995579205}
+  - {fileID: 1418513939}
   - {fileID: 1333234826}
   - {fileID: 1923491560}
   - {fileID: 1836582}
   - {fileID: 47250907}
+  - {fileID: 1980713049995579205}
   - {fileID: 1419335437}
   - {fileID: 1681341530}
   - {fileID: 569898527}
   - {fileID: 1467987779}
-  - {fileID: 1298808839}
   - {fileID: 1286910648}
+  - {fileID: 1298808839}
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17432,17 +17438,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70d91aea611bc3940a6a77da56bddcd2, type: 3}
---- !u!114 &2135591615 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1980713048978975082, guid: 076db8f046723ba468af96bf25b8f83f, type: 3}
-  m_PrefabInstance: {fileID: 2093714591}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 489846992fc367940b8e16fa3b266f78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2138738748
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19295,7 +19290,7 @@ Transform:
   m_Children:
   - {fileID: 845013374}
   m_Father: {fileID: 1652305833}
-  m_RootOrder: 1
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1980713049995579206
 GameObject:
@@ -19330,7 +19325,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af0489681c3e2e4780f3fcfb2781b0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 5194965603211544593}
   enemyRotationScript: {fileID: 845013376}
   enemyObj: {fileID: 845013373}
   isIdle: 0
