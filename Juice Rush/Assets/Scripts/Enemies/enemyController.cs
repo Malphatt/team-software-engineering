@@ -89,6 +89,15 @@ public class enemyController : MonoBehaviour
             }
         }
     }
+    public bool GetPlayerDetected()
+    {
+        return playerDetected;
+    }
+
+    public NavMeshAgent GetAgent()
+    {
+        return agent;
+    }
     //
     void Idle()
     {

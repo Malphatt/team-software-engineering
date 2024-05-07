@@ -12,7 +12,6 @@ public class PuddleScript : MonoBehaviour
     {
         if (!hasSplashed)
         {
-            print("splash");
             StartCoroutine(SplashRoutine());
             var main = _particleSystem.main;
             main.startSpeed = new ParticleSystem.MinMaxCurve(JuiceSlider.Instance.juiciness * 0.5f, JuiceSlider.Instance.juiciness);

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -5,6 +6,7 @@ public class Enemy : MonoBehaviour
     public GameObject Player;
     [SerializeField] EnemyData EnemyData;
     public float health;
+    public bool dead = false;
 
     void Start()
     {
@@ -15,6 +17,9 @@ public class Enemy : MonoBehaviour
     {
         health -= damage;
         if (health <= 0f)
+        {
             Destroy(gameObject, EnemyData.DeathDelay);
+            dead = true;
+        }
     }
 }
