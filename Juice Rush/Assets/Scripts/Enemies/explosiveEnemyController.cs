@@ -7,7 +7,7 @@ public class explosiveEnemyController : MonoBehaviour
 {
     //General variables
     NavMeshAgent agent;
-    [SerializeField] Transform player;
+    Transform player;
     [SerializeField] float health;
     bool isAlive;
     Rigidbody rb;
@@ -72,6 +72,7 @@ public class explosiveEnemyController : MonoBehaviour
 
     void Start()
     {
+        player = GetComponent<Enemy>().Player.transform;
         isAlive = true;
         hasJumped = false;
         agent = GetComponent<NavMeshAgent>();
