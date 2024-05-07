@@ -15,9 +15,11 @@ MonoBehaviour:
   Name: 1
   Type: 1
   Class: 1
-  Range: 100
+  Range: 200
   AttackCooldown: 0.1
   Damage: 10
   HeadshotMultiplier: 1.25
   ReloadTime: 2
   MagazineSize: 12
+  DropOffRange: 100
+  DropOffMultiplier: 0.5

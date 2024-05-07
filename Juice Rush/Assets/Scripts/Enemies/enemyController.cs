@@ -7,7 +7,7 @@ public class enemyController : MonoBehaviour
 {
     //General variables
     private NavMeshAgent agent;
-    [SerializeField] Transform player;
+    Transform player;
     //[SerializeField] float health;
     private bool isAlive;
     Coroutine searchCoroutine;
@@ -45,6 +45,8 @@ public class enemyController : MonoBehaviour
 
     void Start()
     {
+        player = GetComponent<Enemy>().Player.transform;
+
         enemyRotationScript = enemyObj.GetComponent<enemyRotation>();
         shotgunScript = shotgunObj.GetComponent<enemyShotgun>();
         agent = GetComponent<NavMeshAgent>();

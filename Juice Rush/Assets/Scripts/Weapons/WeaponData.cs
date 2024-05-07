@@ -22,4 +22,6 @@ public class WeaponData : ScriptableObject
     [Header("Gun Values")]
     public float ReloadTime;
     public int MagazineSize;
+    public float DropOffRange;
+    public float DropOffMultiplier;
 }
