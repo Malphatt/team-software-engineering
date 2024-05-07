@@ -5,6 +5,8 @@ public class Enemy : MonoBehaviour
 {
     public GameObject Player;
     [SerializeField] EnemyData EnemyData;
+    [SerializeField] ParticleSystem sparks;
+    [SerializeField] int particleCount;
     public float health;
     public bool dead = false;
 
@@ -15,6 +17,7 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        transform.GetComponent<ParticleSystem>().Emit(particleCount * JuiceSlider.Instance.juiciness);
         health -= damage;
         if (health <= 0f)
         {
