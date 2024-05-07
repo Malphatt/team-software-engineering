@@ -15,7 +15,6 @@ public class shotgunBullet : MonoBehaviour
             //Apply damage to a test player
             tps = other.gameObject.GetComponent<testingPlayerHealth>();
             tps.TakeDamage(damage);
-            Debug.Log("Destroyed?");
             Destroy(this.gameObject);
         }
         //When merged to main level, make an environment tag for walls, floor, etc
