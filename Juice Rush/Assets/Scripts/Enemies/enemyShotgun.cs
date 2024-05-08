@@ -11,7 +11,6 @@ public class enemyShotgun : MonoBehaviour
     [SerializeField] float shotForce;
     [SerializeField] float fireRate;
     [SerializeField] Transform player;
-    //float aimSpeed = 3f;
     float fireTime = 1f;
 
     public void FireShotgun()
