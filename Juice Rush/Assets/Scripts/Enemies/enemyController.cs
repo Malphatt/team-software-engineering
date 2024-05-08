@@ -257,7 +257,8 @@ public class enemyController : MonoBehaviour
         int bulletLayer = 1 << LayerMask.NameToLayer("Bullet");
         int enemyLayer = 1 << LayerMask.NameToLayer("Enemy");
         int weaponLayer = 1 << LayerMask.NameToLayer("Weapon");
-        int excludingLayerMask = ~(bulletLayer | enemyLayer | weaponLayer);
+        int hitboxLayerMask = 1 << LayerMask.NameToLayer("Hitbox");
+        int excludingLayerMask = ~(bulletLayer | enemyLayer | weaponLayer | hitboxLayerMask);
         //Raycasts towards the player, ignoring specified layers
         if (Physics.Raycast(transform.position, directionToPlayer, out hit, maxDistance, excludingLayerMask))
         {

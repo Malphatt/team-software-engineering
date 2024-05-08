@@ -161,7 +161,8 @@ public class TurretController : MonoBehaviour
         //
         int bulletLayerMask = 1 << LayerMask.NameToLayer("Bullet");
         int enemyLayerMask = 1 << LayerMask.NameToLayer("Enemy");
-        int layerMask = ~(bulletLayerMask | enemyLayerMask);
+        int hitboxLayerMask = 1 << LayerMask.NameToLayer("Hitbox");
+        int layerMask = ~(bulletLayerMask | enemyLayerMask | hitboxLayerMask);
         if (Physics.Raycast(gunMuzzle.position, directionToPlayer, out hit, maxDistance, layerMask))
         {
             return hit.transform == player;
