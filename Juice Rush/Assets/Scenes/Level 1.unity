@@ -6733,7 +6733,7 @@ GameObject:
   - component: {fileID: 874936940}
   - component: {fileID: 874936942}
   - component: {fileID: 874936941}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Melee Hitbox (Body Shot)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18233,7 +18233,7 @@ GameObject:
   - component: {fileID: 1522113619}
   - component: {fileID: 1522113621}
   - component: {fileID: 1522113620}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Melee Hitbox (Head Shot)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
