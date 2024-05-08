@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class playerController : MonoBehaviour
 {
     [SerializeField] Camera playerCamera;
+    [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] private Transform debugHitPointTransform;
     private Vector3 cameraOffset;
 
@@ -229,7 +230,6 @@ public class playerController : MonoBehaviour
         // Calculate the hookshot's direction and speed
         hookshotDir = (hookshotPosition - transform.position).normalized;
         hookshotSpeed = Vector3.Distance(transform.position, hookshotPosition);
-
         // Move character controller
         characterController.Move(hookshotSpeed * hookshotSpeedMultiplier * hookshotDir * Time.deltaTime);
     }
@@ -317,6 +317,7 @@ public class playerController : MonoBehaviour
 
     public void OnGrapple(InputAction.CallbackContext context)
     {
+        muzzleFlash.Play();
         if (context.phase == InputActionPhase.Started)
         {
             if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit hit)){;

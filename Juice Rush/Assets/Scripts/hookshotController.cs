@@ -18,7 +18,6 @@ public class hookshotController : MonoBehaviour
     public GameObject hookshotBase;
     public GameObject hookshotChains;
     public GameObject hookshotOrigin;
-
     [SerializeField] private GrappleState state;
 
     // Start is called before the first frame update
