@@ -176,15 +176,15 @@ public class enemyController : MonoBehaviour
     //Coroutine for rotating one place on a SearchWaypoint
     IEnumerator SearchPlayer()
     {
-        // Set the rotationDuration to manipulate the speed of the rotation 
+        //Set the rotationDuration to manipulate the speed of the rotation 
         float rotationDuration = 3f;
         isSearching = true;
         agent.isStopped = true;
 
 
         Quaternion originalRotation = transform.rotation; //Original rotation
-        Quaternion rightRotation = originalRotation * Quaternion.Euler(0, 60, 0);//Set the rotation towards right to 60 degrees
-        Quaternion leftRotation = rightRotation * Quaternion.Euler(0, -120, 0);//Set the rotation towards left to -120 degrees
+        Quaternion rightRotation = originalRotation * Quaternion.Euler(0, 60, 0); //Set the rotation towards right to 60 degrees
+        Quaternion leftRotation = rightRotation * Quaternion.Euler(0, -120, 0); //Set the rotation towards left to -120 degrees
 
         //Rotate 60 degrees to the right
         for (float i = 0; i < 1; i += Time.deltaTime / rotationDuration)
@@ -269,12 +269,12 @@ public class enemyController : MonoBehaviour
         }
         return false;
     }
+
     //Visualization of the enemy POV
     void OnDrawGizmos()
     {
-        if (!enabled) return;
-
-        const int rayCount = 8; //Number of rays used to visualize each FOV plane. Increase for finer visualization.
+        //Number of rays used to visualize each FOV angle
+        const int rayCount = 10; 
 
         Vector3 origin = transform.position;
         Gizmos.color = Color.red;
@@ -309,12 +309,7 @@ public class enemyController : MonoBehaviour
             Gizmos.DrawRay(origin, verticalDownRotation * verticalDirection * maxDistance);
             Gizmos.DrawRay(origin, verticalUpRotation * verticalDirection * maxDistance);
         }
-        Gizmos.DrawLine(origin, origin + horizontalLeftRotation * transform.forward * maxDistance);
-        Gizmos.DrawLine(origin, origin + horizontalRightRotation * transform.forward * maxDistance);
-        Gizmos.DrawLine(origin, origin + verticalUpRotation * transform.forward * maxDistance);
-        Gizmos.DrawLine(origin, origin + verticalDownRotation * transform.forward * maxDistance);
     }
-
 }
 
 
