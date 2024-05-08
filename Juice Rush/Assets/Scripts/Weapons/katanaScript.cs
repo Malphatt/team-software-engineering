@@ -13,6 +13,10 @@ public class katanaScript : MonoBehaviour
     public Material mat;
     [SerializeField] GameObject katana, Handle, Blade, BottomHandle, BladeGuard, HandleWrap;
 
+    private void Awake()
+    {
+        katana.GetComponent<Animator>().SetBool("pulling", true);
+    }
     public void StartAttack()
     {
         // katana.GetComponent<Animator>().Set("Hold");
