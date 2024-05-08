@@ -75,7 +75,7 @@ public class LavaParticleSpawner : MonoBehaviour
     {
         if(other.transform.GetComponent<playerController>() != null)
         {
-            other.transform.GetComponent<testingPlayerHealth>().TakeDamage(100);
+            other.transform.GetComponent<testingPlayerHealth>().TakeDamage(101);
         }
     }
 }
