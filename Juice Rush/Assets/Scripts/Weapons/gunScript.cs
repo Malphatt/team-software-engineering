@@ -9,16 +9,24 @@ public class gunScript : MonoBehaviour
     public bool ADS { get; private set; } 
     [SerializeField] Transform MuzzlePoint;
     [SerializeField] GameObject BulletPrefab;
-
+    [SerializeField] Animator anim;
+    [SerializeField] GameObject gun;
+    public ParticleSystem muzzleFlash;
+    private float timer;
     Transform StartPoint;
     Transform HitPoint;
-
+    private void OnEnable()
+    {
+        timer = 0;
+    }
     public void StartAttack(Transform targetLocation)
     {
         if (CurrentAmmo <= 0 && !Reloading) StartReload();
         if (Reloading) return;
-
+        anim.SetBool("isShooting", true);
+        timer = 0;
         CurrentAmmo--;
+        muzzleFlash.Play();
         Debug.Log("Gun Fired");
 
         if (targetLocation != HitPoint)
@@ -72,20 +80,26 @@ public class gunScript : MonoBehaviour
     void Start()
     {
         CurrentAmmo = gameObject.GetComponent<Weapon>().WeaponData.MagazineSize;
+        gun = this.gameObject;
+        anim = gun.GetComponent<Animator>();
     }
 
     void Update()
     {
         if (StartPoint != null && HitPoint != null)
             Debug.DrawRay(StartPoint.position, HitPoint.position - StartPoint.position);
+        timer += Time.deltaTime;
+        anim.SetFloat("timePassed", timer);
+        if (timer > 0.05f)
+            anim.SetBool("isShooting", false);
     }
 
     private IEnumerator Reload()
     {
+        anim.SetBool("isReloading", true);
         Reloading = true;
-
-        yield return new WaitForSeconds(gameObject.GetComponent<Weapon>().WeaponData.ReloadTime);
-
+        yield return new WaitForSeconds(5);
+        anim.SetBool("isReloading", false);
         Reloading = false;
         CurrentAmmo = gameObject.GetComponent<Weapon>().WeaponData.MagazineSize;
     }
