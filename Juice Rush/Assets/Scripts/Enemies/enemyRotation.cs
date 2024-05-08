@@ -8,7 +8,6 @@ public class enemyRotation : MonoBehaviour
     public void shotgunEnemyRotation(Transform player)
     {
         Vector3 direction = (player.position - transform.position);
-        // Debug.Log(direction.x);
         //Determines the rotation towards the player
         Quaternion lookRotation = Quaternion.LookRotation(direction, Vector3.up);
         lookRotation = new Quaternion(0, lookRotation.y, 0, lookRotation.w);
