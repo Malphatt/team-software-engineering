@@ -18,6 +18,10 @@ public class gunScript : MonoBehaviour
     private void OnEnable()
     {
         timer = 0;
+
+        if (Reloading) Reloading = false;
+        // If the gun has no ammo, reload
+        if (CurrentAmmo <= 0 && !Reloading) StartReload();
     }
     public void StartAttack(Transform targetLocation)
     {
@@ -27,7 +31,6 @@ public class gunScript : MonoBehaviour
         timer = 0;
         CurrentAmmo--;
         muzzleFlash.Play();
-        Debug.Log("Gun Fired");
 
         if (targetLocation != HitPoint)
         {
@@ -77,7 +80,7 @@ public class gunScript : MonoBehaviour
         // Do Nothing
     }
 
-    void Start()
+    void Awake()
     {
         CurrentAmmo = gameObject.GetComponent<Weapon>().WeaponData.MagazineSize;
         gun = this.gameObject;
