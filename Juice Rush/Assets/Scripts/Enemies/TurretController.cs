@@ -171,7 +171,7 @@ public class TurretController : MonoBehaviour
     }
     void OnDrawGizmos()
     {
-        const int rayCount = 8; //Number of rays used to visualize each FOV
+        const int rayCount = 12; //Number of rays used to visualize each FOV
 
         Vector3 origin = transform.position;
         Gizmos.color = Color.red;
