@@ -70,4 +70,12 @@ public class LavaParticleSpawner : MonoBehaviour
             rb.AddForce(forceMagnitude * forceDirection, ForceMode.Impulse);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.transform.GetComponent<playerController>() != null)
+        {
+            other.transform.GetComponent<testingPlayerHealth>().TakeDamage(100);
+        }
+    }
 }
