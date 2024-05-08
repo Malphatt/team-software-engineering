@@ -101,9 +101,9 @@ public class gunScript : MonoBehaviour
     {
         anim.SetBool("isReloading", true);
         Reloading = true;
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(GetComponent<Weapon>().WeaponData.ReloadTime);
         anim.SetBool("isReloading", false);
         Reloading = false;
-        CurrentAmmo = gameObject.GetComponent<Weapon>().WeaponData.MagazineSize;
+        CurrentAmmo = GetComponent<Weapon>().WeaponData.MagazineSize;
     }
 }
