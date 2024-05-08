@@ -7,7 +7,7 @@ public class explosiveEnemyController : MonoBehaviour
 {
     //General variables
     NavMeshAgent agent;
-    [SerializeField] Transform player;
+    Transform player;
     [SerializeField] float health;
     bool isAlive;
     Rigidbody rb;
@@ -72,6 +72,7 @@ public class explosiveEnemyController : MonoBehaviour
 
     void Start()
     {
+        player = GetComponent<Enemy>().Player.transform;
         isAlive = true;
         hasJumped = false;
         agent = GetComponent<NavMeshAgent>();
@@ -254,9 +255,7 @@ public class explosiveEnemyController : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        if (!enabled) return;
-
-        const int rayCount = 8; //Number of rays used to visualize each FOV plane. Increase for finer visualization.
+        const int rayCount = 10; //Number of rays used to visualize each FOV
 
         Vector3 origin = transform.position;
         Gizmos.color = Color.red;
@@ -291,9 +290,5 @@ public class explosiveEnemyController : MonoBehaviour
             Gizmos.DrawRay(origin, verticalDownRotation * verticalDirection * maxDistance);
             Gizmos.DrawRay(origin, verticalUpRotation * verticalDirection * maxDistance);
         }
-        Gizmos.DrawLine(origin, origin + horizontalLeftRotation * transform.forward * maxDistance);
-        Gizmos.DrawLine(origin, origin + horizontalRightRotation * transform.forward * maxDistance);
-        Gizmos.DrawLine(origin, origin + verticalUpRotation * transform.forward * maxDistance);
-        Gizmos.DrawLine(origin, origin + verticalDownRotation * transform.forward * maxDistance);
     }
 }

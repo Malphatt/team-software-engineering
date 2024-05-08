@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1030748292803129953}
   - component: {fileID: 1030748292803129964}
+  - component: {fileID: 5966174578539574519}
   - component: {fileID: 1030748292803129952}
   - component: {fileID: 1030748292803129955}
   - component: {fileID: 1030748292803129954}
@@ -49,7 +50,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ffd9fff30d3cf045a2bbef8cb358252, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   health: 150
   waypoints:
   - {fileID: 0}
@@ -76,6 +76,24 @@ MonoBehaviour:
   canSpawnMinions: 1
   explosionTriggerDistance: 5
   explosionDelay: 2.5
+--- !u!114 &5966174578539574519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030748292803129966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40ed79a0fbe45de4ebf103587afcd19a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  EnemyData: {fileID: 0}
+  sparks: {fileID: 0}
+  particleCount: 0
+  health: 0
+  dead: 0
 --- !u!33 &1030748292803129952
 MeshFilter:
   m_ObjectHideFlags: 0

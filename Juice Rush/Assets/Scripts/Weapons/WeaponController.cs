@@ -62,6 +62,8 @@ public class WeaponController : MonoBehaviour
         }
         else if (weaponsArray[weaponIndex].GetComponent<Weapon>().WeaponData.Class == WeaponData.Classes.Ranged)
         {
+            if (weaponsArray[weaponIndex].GetComponent<gunScript>().Reloading) return;
+            
             RaycastHit[] hits;
             hits = Physics.RaycastAll(PlayerCamera.transform.position, PlayerCamera.transform.forward, weaponsArray[weaponIndex].GetComponent<Weapon>().WeaponData.Range);
 

@@ -13,7 +13,7 @@ public class TurretController : MonoBehaviour
     [SerializeField] float horizontalFOV;
     [SerializeField] float verticalFOV;
     [SerializeField] Enemy Turret;
-    Transform player;
+    [SerializeField] Transform player;
 
     //Attack variables
     [SerializeField] GameObject projectilePrefab;
@@ -24,16 +24,14 @@ public class TurretController : MonoBehaviour
     [SerializeField] float accuracy;
     [SerializeField] float shotForce;
 
-
     Coroutine rotateCoroutine;
-    // Start is called before the first frame update
+
     void Start()
     {
         rotateCoroutine = StartCoroutine(RotateTurretHead());
         player = Turret.Player.transform;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (IsPlayerDetected())
@@ -120,7 +118,6 @@ public class TurretController : MonoBehaviour
             }
 
         }
-
         //Once the loop ends
         rotateCoroutine = null;
     }
@@ -173,7 +170,7 @@ public class TurretController : MonoBehaviour
     }
     void OnDrawGizmos()
     {
-        const int rayCount = 8; // Number of rays used to visualize each FOV plane. Increase for finer visualization.
+        const int rayCount = 8; //Number of rays used to visualize each FOV
 
         Vector3 origin = transform.position;
         Gizmos.color = Color.red;
@@ -208,9 +205,5 @@ public class TurretController : MonoBehaviour
             Gizmos.DrawRay(origin, verticalDownRotation * verticalDirection * maxDistance);
             Gizmos.DrawRay(origin, verticalUpRotation * verticalDirection * maxDistance);
         }
-        Gizmos.DrawLine(origin, origin + horizontalLeftRotation * transform.forward * maxDistance);
-        Gizmos.DrawLine(origin, origin + horizontalRightRotation * transform.forward * maxDistance);
-        Gizmos.DrawLine(origin, origin + verticalUpRotation * transform.forward * maxDistance);
-        Gizmos.DrawLine(origin, origin + verticalDownRotation * transform.forward * maxDistance);
     }
 }
