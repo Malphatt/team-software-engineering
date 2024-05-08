@@ -14,7 +14,7 @@ public class testingPlayerHealth : MonoBehaviour
     private void Update()
     {
         HealthRegeneration();
-        if(health < 0)
+        if(health <= 0)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
