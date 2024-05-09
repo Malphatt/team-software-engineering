@@ -69,6 +69,9 @@ public class playerController : MonoBehaviour
         cameraOffset = playerCamera.transform.position - transform.position;
         speed = walkingspeed;
 
+        rotationX = playerCamera.transform.eulerAngles.y;
+        rotationY = playerCamera.transform.eulerAngles.x;
+
         // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

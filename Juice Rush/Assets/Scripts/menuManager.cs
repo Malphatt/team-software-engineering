@@ -6,12 +6,26 @@ using UnityEngine.InputSystem;
 public class menuManager : MonoBehaviour
 {
     public GameObject controlsPanel;
+    public GameObject juiceSlider;
 
     public void NextScene()
     {
-        //Load the next scene
-        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        //Get the value of the slider
+        float juiceValue = juiceSlider.GetComponent<UnityEngine.UI.Slider>().value;
+
+        if (juiceValue == 0)
+        {
+            //Load the "Juiceless scene"
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Juiceless");
+        }
+        else
+        {
+            //Load the "Juicy" scene
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Juicy");
+        }
     }
+
+
 
     public void togglePauseMenu(InputAction.CallbackContext context)
     {

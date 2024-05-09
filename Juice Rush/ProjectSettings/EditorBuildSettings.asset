@@ -9,9 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu Screen.unity
     guid: ec28cf7d35cf8444cbc4268d948df966
   - enabled: 1
-    path: Assets/Scenes/Level 1.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
-    path: Assets/Scenes/Test Scene.unity
-    guid: 5b540965620eb024d8c20cd9980284c5
+    path: Assets/Scenes/Juiceless.unity
+    guid: 4004d19fbbb16174891389f58ace7e5b
+  - enabled: 1
+    path: Assets/Scenes/Juicy.unity
+    guid: c8fb10b519d388a4abd73c05e4a16537
   m_configObjects: {}
